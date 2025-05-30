@@ -5,12 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* background campus */
-.bg-gradient-campus {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
-        url("/images/telkomuniv.jpg");
-}
-
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';

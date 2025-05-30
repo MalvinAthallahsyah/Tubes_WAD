@@ -16,3 +16,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 /// Ini rute buat lupa password
 Route::get('/forgot-password', [LoginController::class, 'showForgotPasswordForm'])->name('password.request');
+
+/// Route untuk register
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);

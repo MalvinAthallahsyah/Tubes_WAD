@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Telkom Marketplace</title>
     <!-- Cara import CSS langsung (untuk pemula) -->
-    <link rel="stylesheet" href="{{ asset('css/login-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login-register.css') }}">
 </head>
 <body>
     <!-- Container utama -->
@@ -16,10 +16,8 @@
             <div class="left-side">
                 <!-- Title disini -->
                 <div class="logo">
-                    <img src="{{ asset('images/logomarketplace.png') }}" alt="Telkom Marketplace Logo"> <!-- gatau cara remove background  -->
+                    <img src="{{ asset('images/logomarketplace.png') }}" alt="Telkom Marketplace Logo">
                 </div>
-                <p class="subtitle">Campus Community Marketplace</p>
-
                 <!-- Header form login -->
                 <h3 class="login-header">Login to Your Account</h3>
 
@@ -51,14 +49,16 @@
                         Login
                     </button>
                 </form>
-
                 <!-- Pembatas OR -->
                 <div class="divider">or</div>
-
                 <!-- Tombol Login SSO -->
                 <button class="button sso-button">
                     Login with iGracias SSO
                 </button>
+                <!-- register -->
+                <div class="register-section">
+                    <p class="register-text">Don't have an account? <a href="{{ route('register') }}" class="register-link">Register here</a></p>
+                </div>
             </div>
 
             <!-- Bagian kanan (banner) -->
