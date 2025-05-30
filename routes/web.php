@@ -8,8 +8,8 @@ Route::get('/', function () {
 });
 
 /// Ini route buat login ya
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 
 /// Ini buat logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

@@ -31,8 +31,8 @@ class LoginController extends Controller
             return redirect($this->redirectTo);
         }
 
-        // Cek dulu datanya valid ga
-        $this->validate($request, [
+        // Cek dulu datanya valid ga (DIUBAH INI)
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);

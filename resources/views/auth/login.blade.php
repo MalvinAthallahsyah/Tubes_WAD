@@ -23,6 +23,7 @@
 
                 <!-- Form Login -->
                 <form method="POST" action="{{ route('login') }}">
+                    @csrf <!-- T@csrf adalah directive Blade yang menghasilkan input hidden -->
 
                     <!-- Input email -->
                     <div class="form-group">
