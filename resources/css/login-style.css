@@ -1,0 +1,234 @@
+/* CSS untuk halaman login */
+
+/* Reset styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Style buat background halaman */
+body {
+    background-color: #000000;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("/images/telkomuniv.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container utama */
+.container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Kotak putih buat login */
+.login-box {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Di HP tampil ke bawah, di laptop tampil sebelahan */
+@media (min-width: 768px) {
+    .login-box {
+        flex-direction: row;
+    }
+}
+
+/* Bagian kiri (form) */
+.left-side {
+    padding: 30px;
+    width: 100%;
+}
+
+/* Bagian kanan (banner merah) */
+.right-side {
+    background-color: #e53935; /* warna merah Telkom */
+    color: white;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Atur ukuran di layar besar */
+@media (min-width: 768px) {
+    .left-side,
+    .right-side {
+        width: 50%;
+    }
+}
+
+/* Style untuk judul */
+.title {
+    color: #e53935;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style untuk subtitle */
+.subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* Style untuk header login */
+.login-header {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+/* Style untuk form group */
+.form-group {
+    margin-bottom: 16px;
+}
+
+/* Style untuk label */
+.form-label {
+    display: block;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+/* Style untuk input */
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #e53935;
+    box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+}
+
+/* Style untuk bagian remember dan forgot */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+/* Style untuk checkbox */
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
+
+/* Style untuk link forgot password */
+.forgot-link {
+    color: #e53935;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Style untuk tombol */
+.button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Style tombol login */
+.login-button {
+    background-color: #e53935;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.login-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Style tombol SSO */
+.sso-button {
+    background-color: white;
+    color: #444;
+    border: 1px solid #ddd;
+}
+
+.sso-button:hover {
+    background-color: #f5f5f5;
+}
+
+/* Style pembatas OR */
+.divider {
+    text-align: center;
+    margin: 16px 0;
+    color: #777;
+}
+
+/* Style heading di banner */
+.banner-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Style untuk feature box */
+.feature-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+/* Style untuk icon */
+.icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Style untuk logo */
+.logo {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.logo img {
+    max-width: 180px;
+    height: auto;
+}
+
+/* Utilitas */
+.text-center {
+    text-align: center;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
