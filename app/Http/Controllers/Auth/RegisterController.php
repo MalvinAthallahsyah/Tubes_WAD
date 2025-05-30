@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     // Halaman yang dituju setelah register berhasil
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /// Method buat nampilin form register
     public function showRegistrationForm()
@@ -27,24 +27,23 @@ class RegisterController extends Controller
     /// Method buat proses register
     public function register(Request $request)
     {
-        // Validasi data
-        $this->validate($request, [
+        // Validasi data dengan cara yang lebih simple
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         // Bikin user baru
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
         ]);
 
-        // Login langsung
-        auth()->login($user);
+        // HAPUS auth()->login($user);
 
-        // Redirect ke home
-        return redirect($this->redirectTo);
+        // Redirect ke halaman login dengan pesan sukses
+        return redirect('/login')->with('success', 'Registration successful! Please login.');
     }
 }

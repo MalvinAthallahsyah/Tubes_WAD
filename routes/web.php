@@ -20,3 +20,12 @@ Route::get('/forgot-password', [LoginController::class, 'showForgotPasswordForm'
 /// Route untuk register
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+
+Route::get('/dashboard', function () {
+    // Pastikan user sudah login
+    if (!auth()->check()) {
+        return redirect('/login');
+    }
+
+    return view('dashboard');
+})->name('dashboard');

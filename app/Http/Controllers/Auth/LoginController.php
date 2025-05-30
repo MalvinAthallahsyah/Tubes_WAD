@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     // Nah ini buat nentuin mau diarahin kemana abis login
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /// Ini method buat nampilin halaman login ya
     public function showLoginForm()

@@ -122,6 +122,19 @@ body {
     box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
 }
 
+/* Style untuk input yang error */
+.is-invalid {
+    border-color: #e3342f !important;
+    box-shadow: 0 0 0 1px #e3342f;
+}
+
+/* Style untuk pesan error */
+.error-message {
+    color: #e3342f;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 /* Style untuk bagian remember dan forgot */
 .remember-forgot {
     display: flex;
