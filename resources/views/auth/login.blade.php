@@ -23,12 +23,19 @@
 
                 <!-- Form Login -->
                 <form method="POST" action="{{ route('login') }}">
+                    @csrf <!-- T@csrf adalah directive Blade yang menghasilkan input hidden -->
 
                     <!-- Input email -->
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-input"
+                        <input type="email" id="email" name="email" class="form-input @error('email') is-invalid @enderror"
+                               value="{{ old('email') }}"
                                placeholder="student@student.telkomuniversity.ac.id" required>
+
+                        <!-- Ini buat nampilin pesan error -->
+                        @error('email')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
