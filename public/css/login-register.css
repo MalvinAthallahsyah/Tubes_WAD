@@ -112,6 +112,7 @@ body {
 .form-input {
     width: 100%;
     padding: 10px;
+    padding-right: 40px; /* Kasih ruang buat icon */
     border: 1px solid #ddd;
     border-radius: 5px;
 }
@@ -120,6 +121,24 @@ body {
     outline: none;
     border-color: #e53935;
     box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+}
+
+/* CSS untuk container password dan icon mata */
+.password-container {
+    position: relative; /* Biar iconnya bisa di-absolute */
+}
+
+.password-toggle {
+    position: absolute; /* Biar bisa ditaro di kanan input */
+    right: 10px; /* Jarak dari kanan */
+    top: 50%; /* Posisi tengah secara vertikal */
+    transform: translateY(-50%);
+    cursor: pointer; /* Biar kursor jadi pointer pas di hover */
+    color: #777;
+}
+
+.password-toggle:hover {
+    color: #333; /* Warna lebih gelap waktu di hover */
 }
 
 /* Style untuk input yang error */
@@ -216,15 +235,6 @@ body {
     padding: 12px;
     margin-bottom: 12px;
     text-align: center;
-}
-
-/* Style untuk icon */
-.icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    vertical-align: middle;
 }
 
 /* Style untuk logo */
