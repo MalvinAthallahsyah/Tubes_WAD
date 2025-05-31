@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 /// Ini route buat login ya
@@ -29,3 +29,12 @@ Route::get('/dashboard', function () {
 
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/force-logout', function() {
+    auth()->logout();
+    session()->flush();
+    session()->invalidate();
+    session()->regenerateToken();
+
+    return redirect('/login')->with('message', 'Berhasil logout!');
+});
