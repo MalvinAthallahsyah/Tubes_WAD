@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+// Pastikan Anda juga meng-import CategorySeeder jika belum
+// use Database\Seeders\CategorySeeder; // Laravel 10+ biasanya tidak perlu import eksplisit di sini jika namespace-nya benar
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +20,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        // PANGGIL CATEGORY SEEDER DI SINI:
+        $this->call([
+            CategorySeeder::class,
+            // Anda bisa menambahkan seeder lain di sini jika ada, contoh:
+            // ProductSeeder::class,
         ]);
     }
 }

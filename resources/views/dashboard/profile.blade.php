@@ -70,12 +70,12 @@
         <h1>My Profile</h1>
         <div class="profile-card">
             <div class="profile-header">
-                <h2>{{ $user->name }}</h2>
+                <h2>{{ auth()->user()->name }}</h2>
             </div>
             <div class="profile-details">
-                <p><strong>Email:</strong> {{ $user->email }}</p>
-                <p><strong>Phone:</strong> {{ $user->phone ?? 'Not provided' }}</p>
-                <p><strong>Address:</strong> {{ $user->address ?? 'Not provided' }}</p>
+                <p><strong>Email:</strong> {{ auth()->user()->email }}</p>
+                <p><strong>Phone:</strong> {{ auth()->user()->phone ?? 'Not provided' }}</p>
+                <p><strong>Address:</strong> {{ auth()->user()->address ?? 'Not provided' }}</p>
             </div>
             <a href="{{ route('dashboard') }}" class="back-btn">Back to Dashboard</a>
         </div>

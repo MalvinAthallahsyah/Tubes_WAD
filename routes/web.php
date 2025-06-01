@@ -30,9 +30,7 @@ Route::get('/dashboard/profile', function () {
     return view('dashboard.profile');
     })->name('dashboard.profile');
  
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create'); 
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::resource('products', ProductController::class);
 Route::get('/sellers/{seller}', [SellerController::class, 'show'])->name('sellers.show');
 
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
