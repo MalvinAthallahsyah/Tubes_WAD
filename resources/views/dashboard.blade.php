@@ -16,7 +16,7 @@
         <!-- Logo part -->
         <div class="logo">
             <div class="logo-img">
-                <img src="{{ asset('images/logo.png') }}" alt="Telkom Marketplace Logo">
+                <img src="{{ asset('images/logo.png') }}" alt="eeeeeLogo">
             </div>
             <div class="logo-text">Telkom Marketplace</div>
         </div>
@@ -30,8 +30,28 @@
         </div>
 
         <!-- Right side icons -->
-        <div class="profile">
+        <div class="profile" tabindex="0">
             <span class="material-icons profile-icon">person</span>
+
+            <!-- Dropdown menu -->
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="dropdown-item">
+                    <span class="material-icons">account_circle</span>
+                    <a href="#profile">My Profile</a>
+                </div>
+                <div class="dropdown-item">
+                    <span class="material-icons">inventory</span>
+                    <a href="#products">My Products</a>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item">
+                    <span class="material-icons">exit_to_app</span>
+                    <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                        @csrf
+                        <button type="submit" class="logout-dropdown-btn">Logout</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="icons">
@@ -45,11 +65,6 @@
     <div class="container">
         <h2>Welcome, {{ auth()->user()->name }}!</h2>
         <p>Email: {{ auth()->user()->email }}</p>
-
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="logout-btn">Logout</button>
-        </form>
     </div>
 </body>
 </html>
