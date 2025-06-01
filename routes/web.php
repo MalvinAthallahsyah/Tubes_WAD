@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 /// Ini route buat login ya
@@ -24,7 +24,7 @@ Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 's
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
 Route::get('/dashboard', function () {
-    // Pastikan user sudah login
+    // ini biar memastikan user sudah login
     if (!auth()->check()) {
         return redirect('/login');
     }
