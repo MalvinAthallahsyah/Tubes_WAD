@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
         <h1>Product List</h1>
         <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add Product</a>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered text-center">
             <thead>
                 <tr>
                     <th>Name</th>

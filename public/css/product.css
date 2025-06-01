@@ -431,6 +431,8 @@ form.default-styled-form {
     .table td {
         padding: 0.5rem;
         font-size: 0.875rem;
+        text-align: center; 
+        vertical-align: middle;
     }
 
     .actions-box {
