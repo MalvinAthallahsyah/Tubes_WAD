@@ -1,0 +1,290 @@
+/* My first CSS file for Telkom Marketplace */
+
+/* Making the page look clean */
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Top navigation bar */
+.navbar {
+    background-color: white;
+    height: 60px;
+    border-bottom: 1px solid #dddddd;
+    /* Makes the shadow under the bar */
+    box-shadow: 0 2px 4px #cccccc;
+}
+
+/* Company logo area */
+.logo {
+    float: left;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+/* Logo image styling */
+.logo img {
+    float: left;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.logo-img {
+    float: left;
+    margin-right: 10px;
+}
+
+.logo-img img {
+    height: 30px;
+    display: block;
+}
+
+/* The shopping bag icon */
+.logo-icon {
+    color: #dd0000;
+    font-size: 24px;
+    float: left;
+    margin-right: 5px;
+}
+
+/* Text next to the logo */
+.logo-text {
+    color: #dd0000;
+    font-weight: bold;
+    font-size: 18px;
+    float: left;
+    margin-top: 2px;
+}
+
+/* Search area */
+.search-box {
+    float: left;
+    margin-left: 50px;
+    margin-top: 10px;
+    width: 500px;
+    /* This helps put the button inside */
+    position: relative;
+}
+
+/* The text input where users type */
+.search-input {
+    width: 100%;
+    height: 36px;
+    border-radius: 20px;
+    border: 1px solid #dddddd;
+    padding-left: 15px;
+    padding-right: 45px;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+/* Red search button */
+.search-button {
+    /* Position on the right inside search box */
+    position: absolute;
+    right: 5px;
+    top: 4px;
+
+    /* Round red button style */
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    border: none;
+    background-color: #dd0000;
+    color: white;
+
+    /* Clickable pointer cursor */
+    cursor: pointer;
+
+    /* Center the icon inside button */
+    text-align: center;
+    line-height: 28px;
+}
+
+/* Make search icon the right size */
+.search-button .material-icons {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+/* Right side menu icons */
+.icons {
+    float: right;
+    margin-right: 20px;
+    margin-top: 18px;
+}
+
+/* Each individual icon */
+.nav-icon {
+    color: #444444;
+    font-size: 24px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* User profile picture */
+.profile {
+    float: right;
+    margin-right: 20px;
+    margin-top: 12px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 2px solid #dd0000;
+    text-align: center;
+}
+
+/* Profile icon */
+.profile-icon {
+    color: #444444;
+    font-size: 24px;
+    margin-top: 5px;
+}
+/* My first CSS file for Telkom Marketplace */
+
+/* Making the page look clean */
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Top navigation bar */
+.navbar {
+    background-color: white;
+    height: 60px;
+    border-bottom: 1px solid #dddddd;
+    /* Makes the shadow under the bar */
+    box-shadow: 0 2px 4px #cccccc;
+}
+
+/* Company logo area */
+.logo {
+    float: left;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+/* Logo image styling */
+.logo img {
+    float: left;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.logo-img {
+    float: left;
+    margin-right: 10px;
+}
+
+.logo-img img {
+    height: 30px;
+    display: block;
+}
+
+/* The shopping bag icon */
+.logo-icon {
+    color: #dd0000;
+    font-size: 24px;
+    float: left;
+    margin-right: 5px;
+}
+
+/* Text next to the logo */
+.logo-text {
+    color: #dd0000;
+    font-weight: bold;
+    font-size: 18px;
+    float: left;
+    margin-top: 2px;
+}
+
+/* Search area */
+.search-box {
+    float: left;
+    margin-left: 50px;
+    margin-top: 10px;
+    width: 500px;
+    /* This helps put the button inside */
+    position: relative;
+}
+
+/* The text input where users type */
+.search-input {
+    width: 100%;
+    height: 36px;
+    border-radius: 20px;
+    border: 1px solid #dddddd;
+    padding-left: 15px;
+    padding-right: 45px;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+/* Red search button */
+.search-button {
+    /* Position on the right inside search box */
+    position: absolute;
+    right: 5px;
+    top: 4px;
+
+    /* Round red button style */
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    border: none;
+    background-color: #dd0000;
+    color: white;
+
+    /* Clickable pointer cursor */
+    cursor: pointer;
+
+    /* Center the icon inside button */
+    text-align: center;
+    line-height: 28px;
+}
+
+/* Make search icon the right size */
+.search-button .material-icons {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+/* Right side menu icons */
+.icons {
+    float: right;
+    margin-right: 20px;
+    margin-top: 18px;
+}
+
+/* Each individual icon */
+.nav-icon {
+    color: #444444;
+    font-size: 24px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* User profile picture */
+.profile {
+    float: right;
+    margin-right: 20px;
+    margin-top: 12px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 2px solid #dd0000;
+    text-align: center;
+}
+
+/* Profile icon */
+.profile-icon {
+    color: #444444;
+    font-size: 24px;
+    margin-top: 5px;
+}
