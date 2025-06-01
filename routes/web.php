@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Controllers\ProductController;
+<<<<<<< HEAD
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\LoginController;
@@ -9,6 +13,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+=======
+>>>>>>> origin/main
 
 // Route utama - redirect ke login
 Route::get('/', function () {
@@ -108,9 +114,10 @@ Route::get('/setup-test-data', function () {
     $user1 = User::create(['name' => 'Adit', 'email' => 'adit@example.com', 'password' => bcrypt('password')]);
     $user2 = User::create(['name' => 'Denis', 'email' => 'denis@example.com', 'password' => bcrypt('password')]);
 
-    $seller1 = \App\Models\Seller::create(['name' => 'Budi', 'description' => 'Your one-stop shop for cool gadgets.']);
-    $seller2 = \App\Models\Seller::create(['name' => 'Don', 'description' => 'Curated collection of fine reads.']);
+    return redirect('/login')->with('message', 'Berhasil logout!');
+});
 
+<<<<<<< HEAD
     // Ensure seller_id's exist for products
     $product1 = \App\Models\Product::create(['seller_id' => $seller1->id, 'name' => 'Super Smartphone X', 'description' => 'Latest generation smartphone with AI features.', 'price' => 12000000, 'stock' => 10]);
     $product2 = \App\Models\Product::create(['seller_id' => $seller1->id, 'name' => 'Noise-Cancelling Headphones Z', 'description' => 'Immersive sound experience.', 'price' => 2500000, 'stock' => 5]);
@@ -135,3 +142,6 @@ Route::get('/show-users-for-id', function() {
     }
     return \App\Models\User::all(['id', 'name', 'email']);
 })->name('show-users-for-id');
+=======
+Route::resource('products', ProductController::class);
+>>>>>>> origin/main

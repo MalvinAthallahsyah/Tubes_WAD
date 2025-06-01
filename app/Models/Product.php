@@ -2,34 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'price',
+        'category_id',
+        'stock',
+        'description',
+        'image_path',
+    ];
 
-    protected $fillable = ['name', 'description', 'seller_id'];
-
-    public function seller()
+    public function category()
     {
-        return $this->belongsTo(Seller::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function reviews()
+    public function scopeAvailable($query)
     {
-        return $this->hasMany(Review::class);
-    }
-
-    // Accessor for average rating
-    public function getAverageRatingAttribute()
-    {
-        return round($this->reviews()->avg('rating'), 1);
-    }
-
-    // Accessor for total reviews
-    public function getTotalReviewsAttribute()
-    {
-        return $this->reviews()->count();
+        return $query->where('stock', '>', 0);
     }
 }
