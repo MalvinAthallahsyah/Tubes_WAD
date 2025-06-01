@@ -40,7 +40,7 @@
                 </div>
                 <div class="dropdown-item">
                     <span class="material-icons">inventory</span>
-                    <a href="#products">My Products</a>
+                    <a href="{{ route('products.index') }}">My Products</a>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-item">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -46,3 +47,5 @@ Route::get('/force-logout', function() {
 
     return redirect('/login')->with('message', 'Berhasil logout!');
 });
+
+Route::resource('products', ProductController::class);
