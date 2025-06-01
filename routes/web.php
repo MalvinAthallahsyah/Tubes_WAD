@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -38,3 +40,10 @@ Route::get('/force-logout', function() {
 
     return redirect('/login')->with('message', 'Berhasil logout!');
 });
+
+Route::get('/dashboard/profile', function () {
+    // Get the authenticated user
+    $user = Auth::user();
+    // Pass the user to the view
+    return view('dashboard.profile', ['user' => $user]);
+})->middleware(['auth'])->name('dashboard.profile');

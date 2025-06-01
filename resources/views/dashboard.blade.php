@@ -37,7 +37,7 @@
             <div class="profile-dropdown" id="profileDropdown">
                 <div class="dropdown-item">
                     <span class="material-icons">account_circle</span>
-                    <a href="#profile">My Profile</a>
+                    <a href="/dashboard/profile.blade.php">My Profile</a>
                 </div>
                 <div class="dropdown-item">
                     <span class="material-icons">inventory</span>
