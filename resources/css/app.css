@@ -1,0 +1,32 @@
+/* Standard Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Star Rating Styles */
+/* Targets stars when their corresponding (sibling) input is checked or any input *before* it in the DOM is checked (due to flex-row-reverse) */
+.rating-stars-group > input.rating-input:checked ~ .star-label .svg-star {
+  color: theme('colors.yellow.400'); /* Main checked color */
+}
+
+/* Ensure the actual star label tied to a checked input also gets the checked color */
+/* This covers the case for the very first star in the reversed DOM order (which is visually the 5th star if 5 are checked) */
+.rating-stars-group > input.rating-input:checked + .star-label .svg-star {
+  color: theme('colors.yellow.400');
+}
+
+/* Hover effect: stars up to the hovered one turn yellow */
+/* When hovering over a label, all "previous" labels in DOM (visually to its right due to reverse) AND itself get hover color */
+.rating-stars-group > .star-label:hover ~ .star-label .svg-star,
+.rating-stars-group > .star-label:hover .svg-star {
+  color: theme('colors.yellow.300'); /* Lighter yellow for hover */
+}
+
+/* Optional: Maintain a more intense color for already selected stars even when hovering elsewhere in the group */
+/* This selector ensures that if a rating is checked, and you hover over a star that is part of that checked rating or before it, it gets a specific hover color */
+.rating-stars-group > input.rating-input:checked ~ .star-label:hover .svg-star {
+    color: theme('colors.yellow.500'); /* Slightly different hover for stars within the checked range */
+}
+.rating-stars-group > input.rating-input:checked + .star-label:hover .svg-star {
+    color: theme('colors.yellow.500');
+}
