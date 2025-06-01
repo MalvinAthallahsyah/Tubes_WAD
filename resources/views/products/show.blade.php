@@ -1,52 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
-    {{-- Product Details Card --}}
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 md:p-8 mb-8">
-        <div class="md:flex md:space-x-8">
-            {{-- Product Image Placeholder --}}
-            <div class="md:w-1/3 mb-6 md:mb-0">
-                <div class="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                    {{-- Replace with actual product image logic --}}
-                    {{-- Example: <img src="{{ $product->image_url ?? asset('images/placeholder_product.png') }}" alt="{{ $product->name }}" class="w-full h-full object-cover"> --}}
-                    <svg class="w-24 h-24 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                </div>
-            </div>
-
-            {{-- Product Info --}}
-            <div class="md:w-2/3">
-                <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ $product->name }}</h1>
-                @if($product->seller)
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                        Sold by: <a href="{{ route('sellers.show', $product->seller) }}" class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-600 font-medium">{{ $product->seller->name }}</a>
-                    </p>
-                @endif
-                <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">{{ $product->description }}</p>
-
-                {{-- Price & Stock Placeholder --}}
-                <div class="mb-6">
-                    <span class="text-3xl font-bold text-red-600 dark:text-red-500 mr-4">Rp {{ number_format($product->price ?? 0, 0, ',', '.') }}</span> {{-- Assuming you have a price attribute --}}
-                    <span class="text-sm font-medium {{ ($product->stock ?? 0) > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' }}">
-                        {{ ($product->stock ?? 0) > 0 ? 'In Stock' : 'Out of Stock' }} ({{ $product->stock ?? 0 }}) {{-- Assuming you have a stock attribute --}}
-                    </span>
-                </div>
-
-                {{-- Action Buttons Placeholder --}}
-                <div class="flex space-x-4">
-                    <button type="button" class="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold text-sm rounded-md shadow-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
-                        Add to Cart
-                    </button>
-                    <button type="button" class="px-6 py-3 border border-red-600 text-red-600 hover:bg-red-50 dark:hover:bg-red-700/20 font-semibold text-sm rounded-md shadow-sm transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1 -ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                        Add to Wishlist
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+@section('content')    
     {{-- Reviews Section --}}
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 md:p-8">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
