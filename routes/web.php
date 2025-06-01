@@ -8,12 +8,14 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 // Route utama - redirect ke login
 Route::get('/', function () {
     return redirect('/login');
 });
 
+// ==================================================================== WIRA
 // Routes untuk Auth
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -21,7 +23,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-// Dashboard & Profile routes - harus login dulu
+// Dashboard & Profile routes - harus login dulu PUNYA WIRA
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -31,7 +33,46 @@ Route::middleware('auth')->group(function () {
         $user = Auth::user();
         return view('dashboard.profile', ['user' => $user]);
     })->name('dashboard.profile');
+
+    Route::post('/dashboard/profile/update', function (Request $request) {
+        $user = Auth::user();
+
+        // Data profil
+        $profileData = [
+            'name' => $request->name,
+            'nim' => $request->nim,
+            'phone' => $request->phone,
+            'faculty' => $request->faculty,
+            'major' => $request->major,
+            'bio' => $request->bio,
+            'street_address' => $request->street,
+            'city' => $request->city,
+            'province' => $request->province,
+            'postal_code' => $request->postal
+        ];
+
+        // Jika ada foto yang diunggah
+        if ($request->hasFile('profile_photo')) {
+            // Buat nama file unik
+            $fileName = 'profile_' . time() . '_' . $user->id . '.' . $request->profile_photo->extension();
+
+            // Simpan file ke folder public/profile_photos
+            $request->profile_photo->move(public_path('profile_photos'), $fileName);
+
+            // Tambahkan ke data profil
+            $profileData['profile_photo'] = $fileName;
+        }
+
+        // Update profil
+        $user->update($profileData);
+
+        return redirect()->route('dashboard.profile')
+            ->with('success',);
+    })->name('profile.update');
 });
+
+// ====================================================================
+
 
 // Product and Seller display routes
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
@@ -57,7 +98,6 @@ Route::get('/setup-test-data', function () {
         return 'Not allowed in this environment.';
     }
 
-    // Clear existing data to avoid conflicts if re-running
     // Be careful with the order if you have strict foreign key constraints that are not onDelete('cascade')
     \App\Models\Review::query()->delete();
     \App\Models\Product::query()->delete();
