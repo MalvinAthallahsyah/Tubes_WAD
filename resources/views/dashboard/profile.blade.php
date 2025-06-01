@@ -16,7 +16,7 @@
         <!-- Logo part -->
         <div class="logo">
             <div class="logo-img">
-                <img src="{{ asset('images/logo.png') }}" alt="logo">
+                <img src="{{ asset('images/Telkom Marketplace Logo.png') }}" alt="logo">
             </div>
             <div class="logo-text">Telkom Marketplace</div>
         </div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="dropdown-item">
                     <span class="material-icons">inventory</span>
-                    <a href="#products">My Products</a>
+                    <a href="{{ route('products.index') }}">My Products</a>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-item">

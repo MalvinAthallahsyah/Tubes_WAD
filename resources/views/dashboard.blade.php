@@ -15,7 +15,7 @@
         <!-- Logo part -->
         <div class="logo">
             <div class="logo-img">
-                <img src="{{ asset('images/logo.png') }}" alt="eeeeeLogo">
+                <img src="{{ asset('images/Telkom Marketplace Logo.png') }}" alt="eeeeeLogo">
             </div>
             <div class="logo-text">Telkom Marketplace</div>
         </div>

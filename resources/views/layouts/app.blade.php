@@ -14,9 +14,9 @@
     <div class="navbar">
         <!-- Logo part -->
         <div class="logo">
-            <div class="logo-img">
+            <a href="/dashboard" class="logo-img">
                 <img src="{{ asset('images/Telkom Marketplace Logo.png') }}" alt="Logo">
-            </div>
+            </a>
             <div class="logo-text">Telkom Marketplace</div>
         </div>
 
