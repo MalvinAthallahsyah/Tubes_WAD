@@ -1,0 +1,223 @@
+/* Membuat halaman terlihat rapi */
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Navigasi bar di bagian atas */
+.navbar {
+    background-color: white;
+    height: 60px;
+    border-bottom: 1px solid #dddddd;
+    /* Membuat bayangan di bawah bar */
+    box-shadow: 0 2px 4px #cccccc;
+}
+
+/* Area logo perusahaan */
+.logo {
+    float: left;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+/* Pengaturan gambar logo */
+.logo img {
+    float: left;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.logo-img {
+    float: left;
+    margin-right: 10px;
+}
+
+.logo-img img {
+    height: 30px;
+    display: block;
+}
+
+/* Ikon tas belanja */
+.logo-icon {
+    color: #dd0000;
+    font-size: 24px;
+    float: left;
+    margin-right: 5px;
+}
+
+/* Teks di sebelah logo */
+.logo-text {
+    color: #dd0000;
+    font-weight: bold;
+    font-size: 18px;
+    float: left;
+    margin-top: 2px;
+}
+
+/* Area pencarian */
+.search-box {
+    float: left;
+    margin-left: 50px;
+    margin-top: 10px;
+    width: 500px;
+    /* Ini membantu meletakkan tombol di dalam */
+    position: relative;
+}
+
+/* Kotak input teks tempat pengguna mengetik */
+.search-input {
+    width: 100%;
+    height: 36px;
+    border-radius: 20px;
+    border: 1px solid #dddddd;
+    padding-left: 15px;
+    padding-right: 45px;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+/* Tombol pencarian merah */
+.search-button {
+    /* Posisi di kanan dalam kotak pencarian */
+    position: absolute;
+    right: 5px;
+    top: 4px;
+
+    /* Gaya tombol bulat merah */
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    border: none;
+    background-color: #dd0000;
+    color: white;
+
+    /* Kursor penunjuk yang bisa diklik */
+    cursor: pointer;
+
+    /* Memusatkan ikon di dalam tombol */
+    text-align: center;
+    line-height: 28px;
+}
+
+/* Membuat ikon pencarian dengan ukuran yang tepat */
+.search-button .material-icons {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+/* Ikon menu di sisi kanan */
+.icons {
+    float: right;
+    margin-right: 20px;
+    margin-top: 18px;
+}
+
+/* Setiap ikon individual */
+.nav-icon {
+    color: #444444;
+    font-size: 24px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* Pengaturan gambar profil */
+.profile {
+    float: right;
+    margin-right: 20px;
+    margin-top: 12px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 2px solid #dd0000;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Ikon orang di dalam profil */
+.profile-icon {
+    color: #444444;
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+/* Kotak dropdown yang muncul */
+.profile-dropdown {
+    /* Sembunyikan di awal */
+    display: none;
+
+    /* Membuatnya muncul di bawah profil */
+    position: absolute;
+    top: 40px;
+    right: 0px;
+
+    /* Membuatnya terlihat bagus */
+    background-color: white;
+    width: 200px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #cccccc;
+}
+
+/* Tampilkan dropdown saat melayang di atas profil */
+.profile:hover .profile-dropdown {
+    display: block;
+}
+
+/* Juga tampilkan dropdown saat profil diklik */
+.profile:focus .profile-dropdown {
+    display: block;
+}
+
+/* Setiap pilihan dalam dropdown */
+.dropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Membuat pilihan menyala saat dihover */
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* Ikon dalam dropdown */
+.dropdown-item .material-icons {
+    float: left;
+    font-size: 20px;
+    margin-right: 10px;
+    color: #555555;
+}
+
+/* Teks link */
+.dropdown-item a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Garis abu-abu antara bagian */
+.dropdown-divider {
+    height: 1px;
+    background-color: #dddddd;
+    margin: 5px 0;
+}
+
+/* Pengaturan tombol logout */
+.logout-dropdown-btn {
+    background: none;
+    border: none;
+    color: #333333;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+}
+
+/* Menghilangkan margin dari form logout */
+.logout-form {
+    margin: 0;
+}

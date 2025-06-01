@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,3 +31,12 @@ Route::get('/dashboard', function () {
 
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/force-logout', function() {
+    auth()->logout();
+    session()->flush();
+    session()->invalidate();
+    session()->regenerateToken();
+
+    return redirect('/login')->with('message', 'Berhasil logout!');
+});

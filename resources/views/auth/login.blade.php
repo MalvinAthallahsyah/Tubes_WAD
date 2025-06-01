@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Telkom Marketplace</title>
-    <!-- Cara import CSS langsung (untuk pemula) -->
     <link rel="stylesheet" href="{{ asset('css/login-register.css') }}">
+    <!-- Font Awesome buat icon mata -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <!-- Container utama -->
@@ -23,7 +24,7 @@
 
                 <!-- Form Login -->
                 <form method="POST" action="{{ route('login') }}">
-                    @csrf <!-- T@csrf adalah directive Blade yang menghasilkan input hidden -->
+                    @csrf <!-- directive Blade yang menghasilkan input hidden -->
 
                     <!-- Input email -->
                     <div class="form-group">
@@ -40,8 +41,13 @@
 
                     <div class="form-group">
                         <label class="form-label" for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-input"
-                               placeholder="Enter your password" required>
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" class="form-input"
+                                   placeholder="Enter your password" required>
+                            <span class="password-toggle" onclick="togglePasswordVisibility()">
+                                <i class="fa fa-eye" id="togglePassword"></i>
+                            </span>
+                        </div>
                     </div>
 
                     <div class="remember-forgot">
@@ -91,5 +97,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // buat liatin password
+        function togglePasswordVisibility() {
+            // Ambil input password
+            var passwordInput = document.getElementById("password");
+            // Ambil icon mata
+            var eyeIcon = document.getElementById("togglePassword");
+
+            // Cek tipe inputnya apa
+            if (passwordInput.type == "password") {
+                // Ubah jadi text biar keliatan
+                passwordInput.type = "text";
+                eyeIcon.className = "fa fa-eye-slash";
+            } else {
+                // Ubah balik jadi password biar ga keliatan
+                passwordInput.type = "password";
+                eyeIcon.className = "fa fa-eye";
+            }
+        }
+    </script>
 </body>
 </html>
