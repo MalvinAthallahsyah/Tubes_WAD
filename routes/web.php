@@ -4,11 +4,33 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ReviewController;
-use App\Models\User; // For test data route
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-
+// Route utama - redirect ke login
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
+});
+
+// Routes untuk Auth
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+// Dashboard & Profile routes - harus login dulu
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/dashboard/profile', function () {
+        $user = Auth::user();
+        return view('dashboard.profile', ['user' => $user]);
+    })->name('dashboard.profile');
 });
 
 // Product and Seller display routes
@@ -72,6 +94,4 @@ Route::get('/show-users-for-id', function() {
         return 'Not allowed in this environment.';
     }
     return \App\Models\User::all(['id', 'name', 'email']);
-})->name('show-users-for-id'); // <-- THE FIX: Added ->name('show-users-for-id') HERE
-
-// require __DIR__.'/auth.php';
+})->name('show-users-for-id');
