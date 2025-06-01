@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 /// Ini route buat login ya
@@ -24,13 +24,19 @@ Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 's
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
 Route::get('/dashboard', function () {
-    // Pastikan user sudah login
+    // ini biar memastikan user sudah login
     if (!auth()->check()) {
         return redirect('/login');
     }
 
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/dashboard/profile', function () {
+    // Get logged in user
+    $user = Auth::user();
+    return view('dashboard.profile', ['user' => $user]);
+})->middleware('auth')->name('dashboard.profile');
 
 Route::get('/force-logout', function() {
     auth()->logout();
