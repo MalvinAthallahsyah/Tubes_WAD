@@ -10,7 +10,6 @@ class LoginController extends Controller
 {
     // Nah ini buat nentuin mau diarahin kemana abis login
     protected $redirectTo = '/dashboard';
-
     /// Ini method buat nampilin halaman login ya
     public function showLoginForm()
     {
@@ -18,11 +17,9 @@ class LoginController extends Controller
         if (auth()->check()) {
             return redirect($this->redirectTo);
         }
-
         // Ini manggil view login.blade.php dari folder auth
         return view('auth.login');
     }
-
     /// Nah ini buat ngeproses data login dari form
     public function login(Request $request)
     {
@@ -30,13 +27,11 @@ class LoginController extends Controller
         if (auth()->check()) {
             return redirect($this->redirectTo);
         }
-
         // Cek dulu datanya valid ga (DIUBAH INI)
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
         // Ambil data dari form
         $email = $request->input('email');
         $password = $request->input('password');
@@ -45,14 +40,11 @@ class LoginController extends Controller
         // Coba login pake data yang dimasukin
         if (auth()->attempt(['email' => $email, 'password' => $password], $remember)) {
             // Kalo berhasil login
-
             // Update session dulu buat keamanan
             $request->session()->regenerate();
-
             // Balikin ke halaman home atau halaman yang diminta sebelumnya
             return redirect()->intended($this->redirectTo);
         }
-
         // Kalo gagal login, balikin ke halaman login dengan pesan error
         return back()->withErrors([
             'email' => 'Invalid email or password. Please try again.',
