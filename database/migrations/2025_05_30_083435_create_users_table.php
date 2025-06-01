@@ -20,6 +20,20 @@ return new class extends Migration
             $table->rememberToken(); // <-- TAMBAHKAN BARIS INI
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            // Tambahkan kolom baru (semuanya boleh kosong)
+            $table->string('nim')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('faculty')->nullable();
+            $table->string('major')->nullable();
+            $table->text('bio')->nullable();
+            $table->string('street_address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('province')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('profile_photo')->nullable();
+        });
     }
 
     // Ini fungsi kalo mau rollback (hapus tabel)
@@ -27,5 +41,6 @@ return new class extends Migration
     {
         // Hapus tabel users
         Schema::dropIfExists('users');
+
     }
 };

@@ -13,7 +13,17 @@ class User extends Authenticatable // Using Authenticatable is fine even if auth
     protected $fillable = [
         'name',
         'email',
-        'password', // proper hashing during registration
+        'password',
+        'nim',
+        'phone',
+        'faculty',
+        'major',
+        'bio',
+        'street_address',
+        'city',
+        'province',
+        'postal_code',
+        'profile_photo',
     ];
 
     protected $hidden = [ // Standard practice
