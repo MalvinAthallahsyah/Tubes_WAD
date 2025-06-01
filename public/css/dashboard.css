@@ -1,6 +1,4 @@
-/* My first CSS file for Telkom Marketplace */
-
-/* Making the page look clean */
+/* Membuat halaman terlihat rapi */
 body {
     margin: 0px;
     padding: 0px;
@@ -8,29 +6,30 @@ body {
     background-color: #f8f8f8;
 }
 
-/* Top navigation bar */
+/* Navigasi bar di bagian atas */
 .navbar {
     background-color: white;
     height: 60px;
     border-bottom: 1px solid #dddddd;
-    /* Makes the shadow under the bar */
+    /* Membuat bayangan di bawah bar */
     box-shadow: 0 2px 4px #cccccc;
 }
 
-/* Company logo area */
+/* Area logo perusahaan */
 .logo {
     float: left;
     margin-left: 20px;
     margin-top: 15px;
 }
 
-/* Logo image styling */
+/* Pengaturan gambar logo */
 .logo img {
     float: left;
     height: 30px;
     margin-right: 10px;
     vertical-align: middle;
 }
+
 .logo-img {
     float: left;
     margin-right: 10px;
@@ -41,7 +40,7 @@ body {
     display: block;
 }
 
-/* The shopping bag icon */
+/* Ikon tas belanja */
 .logo-icon {
     color: #dd0000;
     font-size: 24px;
@@ -49,7 +48,7 @@ body {
     margin-right: 5px;
 }
 
-/* Text next to the logo */
+/* Teks di sebelah logo */
 .logo-text {
     color: #dd0000;
     font-weight: bold;
@@ -58,17 +57,17 @@ body {
     margin-top: 2px;
 }
 
-/* Search area */
+/* Area pencarian */
 .search-box {
     float: left;
     margin-left: 50px;
     margin-top: 10px;
     width: 500px;
-    /* This helps put the button inside */
+    /* Ini membantu meletakkan tombol di dalam */
     position: relative;
 }
 
-/* The text input where users type */
+/* Kotak input teks tempat pengguna mengetik */
 .search-input {
     width: 100%;
     height: 36px;
@@ -80,14 +79,14 @@ body {
     box-sizing: border-box;
 }
 
-/* Red search button */
+/* Tombol pencarian merah */
 .search-button {
-    /* Position on the right inside search box */
+    /* Posisi di kanan dalam kotak pencarian */
     position: absolute;
     right: 5px;
     top: 4px;
 
-    /* Round red button style */
+    /* Gaya tombol bulat merah */
     height: 28px;
     width: 28px;
     border-radius: 50%;
@@ -95,28 +94,28 @@ body {
     background-color: #dd0000;
     color: white;
 
-    /* Clickable pointer cursor */
+    /* Kursor penunjuk yang bisa diklik */
     cursor: pointer;
 
-    /* Center the icon inside button */
+    /* Memusatkan ikon di dalam tombol */
     text-align: center;
     line-height: 28px;
 }
 
-/* Make search icon the right size */
+/* Membuat ikon pencarian dengan ukuran yang tepat */
 .search-button .material-icons {
     font-size: 16px;
     vertical-align: middle;
 }
 
-/* Right side menu icons */
+/* Ikon menu di sisi kanan */
 .icons {
     float: right;
     margin-right: 20px;
     margin-top: 18px;
 }
 
-/* Each individual icon */
+/* Setiap ikon individual */
 .nav-icon {
     color: #444444;
     font-size: 24px;
@@ -124,7 +123,7 @@ body {
     cursor: pointer;
 }
 
-/* Profile picture styling */
+/* Pengaturan gambar profil */
 .profile {
     float: right;
     margin-right: 20px;
@@ -139,24 +138,24 @@ body {
     cursor: pointer;
 }
 
-/* The person icon inside profile */
+/* Ikon orang di dalam profil */
 .profile-icon {
     color: #444444;
     font-size: 24px;
     margin-top: 5px;
 }
 
-/* Dropdown box that appears */
+/* Kotak dropdown yang muncul */
 .profile-dropdown {
-    /* Hide it at first */
+    /* Sembunyikan di awal */
     display: none;
 
-    /* Make it appear below the profile */
+    /* Membuatnya muncul di bawah profil */
     position: absolute;
     top: 40px;
     right: 0px;
 
-    /* Make it look nice */
+    /* Membuatnya terlihat bagus */
     background-color: white;
     width: 200px;
     border: 1px solid #dddddd;
@@ -164,28 +163,28 @@ body {
     box-shadow: 0px 2px 5px #cccccc;
 }
 
-/* Show dropdown when hovering over profile */
+/* Tampilkan dropdown saat melayang di atas profil */
 .profile:hover .profile-dropdown {
     display: block;
 }
 
-/* Also show dropdown when profile is clicked */
+/* Juga tampilkan dropdown saat profil diklik */
 .profile:focus .profile-dropdown {
     display: block;
 }
 
-/* Each option in the dropdown */
+/* Setiap pilihan dalam dropdown */
 .dropdown-item {
     padding: 10px;
     border-bottom: 1px solid #f0f0f0;
 }
 
-/* Make options light up when hovering */
+/* Membuat pilihan menyala saat dihover */
 .dropdown-item:hover {
     background-color: #f5f5f5;
 }
 
-/* The icons in dropdown */
+/* Ikon dalam dropdown */
 .dropdown-item .material-icons {
     float: left;
     font-size: 20px;
@@ -193,21 +192,21 @@ body {
     color: #555555;
 }
 
-/* The text links */
+/* Teks link */
 .dropdown-item a {
     color: #333333;
     text-decoration: none;
     font-size: 14px;
 }
 
-/* Grey line between sections */
+/* Garis abu-abu antara bagian */
 .dropdown-divider {
     height: 1px;
     background-color: #dddddd;
     margin: 5px 0;
 }
 
-/* Logout button styling */
+/* Pengaturan tombol logout */
 .logout-dropdown-btn {
     background: none;
     border: none;
@@ -218,7 +217,7 @@ body {
     text-align: left;
 }
 
-/* Removes margin from logout form */
+/* Menghilangkan margin dari form logout */
 .logout-form {
     margin: 0;
 }

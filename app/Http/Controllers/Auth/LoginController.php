@@ -75,7 +75,7 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         // Balik ke halaman utama
-        return redirect('/');
+        return redirect('/login')->with('message', 'You have been logged out successfully.');
     }
 
     /// Ini buat nampilin halaman lupa password ya tapi asih belumm buat

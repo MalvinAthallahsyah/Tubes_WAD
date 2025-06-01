@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
@@ -37,7 +36,7 @@
             <div class="profile-dropdown" id="profileDropdown">
                 <div class="dropdown-item">
                     <span class="material-icons">account_circle</span>
-                    <a href="/dashboard/profile.blade.php">My Profile</a>
+                    <a href="{{ route('dashboard.profile') }}">My Profile</a>
                 </div>
                 <div class="dropdown-item">
                     <span class="material-icons">inventory</span>

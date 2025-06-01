@@ -41,8 +41,6 @@ class RegisterController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        // HAPUS auth()->login($user);
-
         // Redirect ke halaman login dengan pesan sukses
         return redirect('/login')->with('success', 'Registration successful! Please login.');
     }

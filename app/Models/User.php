@@ -30,13 +30,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * Setting tipe data khusus untuk kolom tertentu
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
     // Kalo mau tambah method lain, tulis di sini
     // Misalnya relasi ke tabel lain, dll
 }
