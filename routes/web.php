@@ -32,6 +32,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/dashboard/profile', function () {
+    // Get logged in user
+    $user = Auth::user();
+    return view('dashboard.profile', ['user' => $user]);
+})->middleware('auth')->name('dashboard.profile');
+
 Route::get('/force-logout', function() {
     auth()->logout();
     session()->flush();
