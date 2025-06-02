@@ -31,8 +31,8 @@ class ReviewController extends Controller
     {
         $validatedData = $request->validated();
 
-        // When auth is integrated, user_id will come from auth()->id()
-        // $validatedData['user_id'] = auth()->id();
+        // Tambahkan user_id dari user yang sedang login
+        $validatedData['user_id'] = auth()->id();
 
         Review::create($validatedData);
 
