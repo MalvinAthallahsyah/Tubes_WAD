@@ -9,7 +9,7 @@
 
     <div class="container">
         <h1 class="product-page-title">Product List</h1>
-        <a href="{{ route('products.create') }}" class="btn btn-primary btn-add-product mb-3">Add Product</a>
+        <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add Product</a>
 
         <table class="table table-bordered text-center product-table">
             <thead>

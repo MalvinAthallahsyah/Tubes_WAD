@@ -306,15 +306,22 @@ input[type="file"].form-control {
     color: #1d1d1f;
 }
 
+/* All buttons styled with red color */
 .btn-primary,
-.btn-success {
-    background: #d70015;
-    color: white;
+.btn-success,
+.btn-warning,
+.btn-danger {
+    color: #fff;
+    background-color: #d70015;
+    border-color: #d70015;
 }
 
 .btn-primary:hover,
-.btn-success:hover {
-    background: #b8000f;
+.btn-success:hover,
+.btn-warning:hover,
+.btn-danger:hover {
+    background-color: #b8000f;
+    border-color: #a8000e;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(215, 0, 21, 0.3);
 }
@@ -419,142 +426,6 @@ form.default-styled-form {
 .actions-box .btn {
     margin-bottom: 0 !important;
 }
-
-.btn-primary {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-}
-.btn-primary:hover {
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
-}
-
-.btn-warning {
-    color: #000;
-    background-color: #ffc107;
-    border-color: #ffc107;
-}
-.btn-warning:hover {
-    background-color: #ffca2c;
-    border-color: #ffc720;
-}
-
-.btn-danger {
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-.btn-danger:hover {
-    background-color: #bb2d3b;
-    border-color: #b02a37;
-}
-
-.btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.btn.loading {
-    position: relative;
-    color: transparent !important;
-}
-
-.btn.loading::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 2px solid transparent;
-    border-top-color: #ffffff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
-.form-control:focus-visible {
-    outline: 2px solid #d70015;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(215, 0, 21, 0.1);
-}
-
-textarea.form-control::-webkit-scrollbar {
-    width: 8px;
-}
-
-textarea.form-control::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-textarea.form-control::-webkit-scrollbar-thumb {
-    background: #d70015;
-    border-radius: 4px;
-}
-
-textarea.form-control::-webkit-scrollbar-thumb:hover {
-    background: #b8000f;
-}
-
-
-.form-delete-inline {
-    display: inline-block;
-    margin: 0;
-}
-
-
-.actions-box .btn {
-
-    margin-bottom: 0 !important;
-}
-
-
-.btn-primary {
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-}
-
-.btn-primary:hover {
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
-}
-
-
-.btn-warning {
-    color: #000;
-    background-color: #ffc107;
-    border-color: #ffc107;
-}
-
-.btn-warning:hover {
-    background-color: #ffca2c;
-    border-color: #ffc720;
-}
-
-
-.btn-danger {
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-
-.btn-danger:hover {
-    background-color: #bb2d3b;
-    border-color: #b02a37;
-}
-
 
 .btn:disabled {
     opacity: 0.6;

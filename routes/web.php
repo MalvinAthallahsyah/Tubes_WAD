@@ -8,6 +8,7 @@ use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController; // <-- DITAMBAHKAN
 use App\Models\User;
 use App\Models\Seller;
 use App\Models\Product;
@@ -27,9 +28,10 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 // Dashboard & Profile routes - harus login dulu punya wira
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {         <-- BARIS LAMA
+    //     return view('dashboard');                 <-- BARIS LAMA
+    // })->name('dashboard');                         <-- BARIS LAMA
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); // <-- BARIS DIPERBARUI
 
     Route::get('/dashboard/profile', function () {
         $user = Auth::user();

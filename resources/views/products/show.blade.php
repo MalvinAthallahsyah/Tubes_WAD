@@ -4,12 +4,16 @@
     {{-- Product Details Card --}}
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 md:p-8 mb-8">
         <div class="md:flex md:space-x-8">
-            {{-- Product Image Placeholder --}}
+            {{-- Product Image --}}
             <div class="md:w-1/3 mb-6 md:mb-0">
                 <div class="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                    {{-- Replace with actual product image logic --}}
-                    {{-- Example: <img src="{{ $product->image_url ?? asset('images/placeholder_product.png') }}" alt="{{ $product->name }}" class="w-full h-full object-cover"> --}}
-                    <svg class="w-24 h-24 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    {{-- UPDATED: Logic untuk menampilkan gambar produk aktual --}}
+                    @if($product->image_path)
+                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                    @else
+                        {{-- Fallback jika tidak ada gambar --}}
+                        <svg class="w-24 h-24 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    @endif
                 </div>
             </div>
 
@@ -17,17 +21,25 @@
             <div class="md:w-2/3">
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ $product->name }}</h1>
                 @if($product->seller)
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"> {{-- Mengurangi margin bottom jika kategori ditambahkan setelah ini --}}
                         Sold by: <a href="{{ route('sellers.show', $product->seller) }}" class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-600 font-medium">{{ $product->seller->name }}</a>
                     </p>
                 @endif
+
+                {{-- ADDED: Menampilkan kategori produk --}}
+                @if($product->category)
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        Category: <span class="font-semibold">{{ $product->category->name }}</span> {{-- Asumsi model Category punya atribut 'name' --}}
+                    </p>
+                @endif
+
                 <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">{{ $product->description }}</p>
 
                 {{-- Price & Stock Placeholder --}}
                 <div class="mb-6">
-                    <span class="text-3xl font-bold text-red-600 dark:text-red-500 mr-4">Rp {{ number_format($product->price ?? 0, 0, ',', '.') }}</span> {{-- Assuming you have a price attribute --}}
+                    <span class="text-3xl font-bold text-red-600 dark:text-red-500 mr-4">Rp {{ number_format($product->price ?? 0, 0, ',', '.') }}</span>
                     <span class="text-sm font-medium {{ ($product->stock ?? 0) > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' }}">
-                        {{ ($product->stock ?? 0) > 0 ? 'In Stock' : 'Out of Stock' }} ({{ $product->stock ?? 0 }}) {{-- Assuming you have a stock attribute --}}
+                        {{ ($product->stock ?? 0) > 0 ? 'In Stock' : 'Out of Stock' }} ({{ $product->stock ?? 0 }})
                     </span>
                 </div>
 
