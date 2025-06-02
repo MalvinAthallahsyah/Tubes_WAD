@@ -1,35 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ProductController;
-<<<<<<< HEAD
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-=======
->>>>>>> origin/main
+use App\Models\Seller;
+use App\Models\Product;
+use App\Models\Review;
 
 // Route utama - redirect ke login
 Route::get('/', function () {
     return redirect('/login');
 });
 
-// ==================================================================== WIRA
-// Routes untuk Auth
+// Routes untuk Auth punya wira
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-// Dashboard & Profile routes - harus login dulu PUNYA WIRA
+// Dashboard & Profile routes - harus login dulu punya wira
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -59,13 +55,8 @@ Route::middleware('auth')->group(function () {
 
         // Jika ada foto yang diunggah
         if ($request->hasFile('profile_photo')) {
-            // Buat nama file unik
             $fileName = 'profile_' . time() . '_' . $user->id . '.' . $request->profile_photo->extension();
-
-            // Simpan file ke folder public/profile_photos
             $request->profile_photo->move(public_path('profile_photos'), $fileName);
-
-            // Tambahkan ke data profil
             $profileData['profile_photo'] = $fileName;
         }
 
@@ -73,75 +64,33 @@ Route::middleware('auth')->group(function () {
         $user->update($profileData);
 
         return redirect()->route('dashboard.profile')
-            ->with('success',);
+            ->with('success', 'Profile updated successfully!');
     })->name('profile.update');
 });
 
 // ====================================================================
-
-
-// Product and Seller display routes
+// Product routes
+Route::resource('products', ProductController::class);
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+// Seller routes
 Route::get('/sellers/{seller}', [SellerController::class, 'show'])->name('sellers.show');
 
 // Review Routes
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
-
-// Create review for a product
 Route::get('/products/{product}/reviews/create', [ReviewController::class, 'createForProduct'])->name('reviews.create.product');
-// Create review for a seller
 Route::get('/sellers/{seller}/reviews/create', [ReviewController::class, 'createForSeller'])->name('reviews.create.seller');
-
 Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
 Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
 Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
-
-// --- Routes for creating test data ---
+// Development/Test routes
 Route::get('/setup-test-data', function () {
-    if (!app()->environment('local')) {
-        return 'Not allowed in this environment.';
-    }
+    //
 
-    // Be careful with the order if you have strict foreign key constraints that are not onDelete('cascade')
-    \App\Models\Review::query()->delete();
-    \App\Models\Product::query()->delete();
-    \App\Models\Seller::query()->delete();
-    \App\Models\User::query()->delete();
-
-
-    $user1 = User::create(['name' => 'Adit', 'email' => 'adit@example.com', 'password' => bcrypt('password')]);
-    $user2 = User::create(['name' => 'Denis', 'email' => 'denis@example.com', 'password' => bcrypt('password')]);
-
-    return redirect('/login')->with('message', 'Berhasil logout!');
-});
-
-<<<<<<< HEAD
-    // Ensure seller_id's exist for products
-    $product1 = \App\Models\Product::create(['seller_id' => $seller1->id, 'name' => 'Super Smartphone X', 'description' => 'Latest generation smartphone with AI features.', 'price' => 12000000, 'stock' => 10]);
-    $product2 = \App\Models\Product::create(['seller_id' => $seller1->id, 'name' => 'Noise-Cancelling Headphones Z', 'description' => 'Immersive sound experience.', 'price' => 2500000, 'stock' => 5]);
-    $product3 = \App\Models\Product::create(['seller_id' => $seller2->id, 'name' => 'The Mystery of the Clockwork Dragon', 'description' => 'A thrilling adventure novel.', 'price' => 150000, 'stock' => 20]);
-
-    // Ensure product_id's and user_id's exist for reviews
-    \App\Models\Review::create(['user_id' => $user1->id, 'product_id' => $product1->id, 'rating' => 5, 'comment' => 'Absolutely fantastic phone! Best I have ever owned.', 'title' => 'Amazing Phone!']);
-    \App\Models\Review::create(['user_id' => $user2->id, 'product_id' => $product1->id, 'rating' => 4, 'comment' => 'Great phone, but battery could be a bit better.', 'title' => 'Good, but...']);
-    \App\Models\Review::create(['user_id' => $user1->id, 'product_id' => $product2->id, 'rating' => 5, 'comment' => 'These headphones are amazing for travel. Sound quality is superb.', 'title' => 'Perfect for Travel!']);
-
-    // Ensure seller_id's and user_id's exist for seller reviews
-    \App\Models\Review::create(['user_id' => $user2->id, 'seller_id' => $seller1->id, 'rating' => 4, 'comment' => 'Good seller, fast shipping for my headphones.', 'title' => 'Reliable Seller']);
-    \App\Models\Review::create(['user_id' => $user1->id, 'seller_id' => $seller2->id, 'rating' => 5, 'comment' => 'Bookworm Nook has an amazing selection and service!', 'title' => 'Fantastic Bookstore!']);
-
-
-    return 'Test data created! Visit <a href="/products/'. $product1->id .'">Product: '. $product1->name .'</a>, <a href="/sellers/'. $seller1->id .'">Seller: '. $seller1->name .'</a>. User IDs created: '. $user1->id .' (Adit), '. $user2->id .' (Denis).';
 })->name('setup.test.data');
-
+// Debug route - only for development
 Route::get('/show-users-for-id', function() {
-     if (!app()->environment('local')) {
-        return 'Not allowed in this environment.';
-    }
-    return \App\Models\User::all(['id', 'name', 'email']);
+    //
 })->name('show-users-for-id');
-=======
-Route::resource('products', ProductController::class);
->>>>>>> origin/main
