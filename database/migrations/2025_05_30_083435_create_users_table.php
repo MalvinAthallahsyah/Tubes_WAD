@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable(); // <-- TAMBAHKAN BARIS INI
             $table->string('password');
             $table->rememberToken(); // <-- TAMBAHKAN BARIS INI
             $table->timestamps();
@@ -33,6 +32,7 @@ return new class extends Migration
             $table->string('province')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('profile_photo')->nullable();
+            $table->string('role')->default('user')->after('profile_photo');
         });
     }
 

@@ -28,10 +28,10 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 // Dashboard & Profile routes - harus login dulu punya wira
 Route::middleware('auth')->group(function () {
-    // Route::get('/dashboard', function () {         <-- BARIS LAMA
-    //     return view('dashboard');                 <-- BARIS LAMA
-    // })->name('dashboard');                         <-- BARIS LAMA
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); // <-- BARIS DIPERBARUI
+    // Ini middleware 'auth' buat pastiin user udah login, kalo belom ya dilempar ke login page dulu
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
     Route::get('/dashboard/profile', function () {
         $user = Auth::user();
@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
 
         // Jika ada foto yang diunggah
         if ($request->hasFile('profile_photo')) {
+            // Ini bikin nama file unik pake time() + user id biar gak tabrakan nama filenya
             $fileName = 'profile_' . time() . '_' . $user->id . '.' . $request->profile_photo->extension();
             $request->profile_photo->move(public_path('profile_photos'), $fileName);
             $profileData['profile_photo'] = $fileName;
@@ -69,6 +70,96 @@ Route::middleware('auth')->group(function () {
             ->with('success', 'Profile updated successfully!');
     })->name('profile.update');
 });
+
+// Ganti route admin yang pakai middleware 'admin' dengan route yang ada pengecekan admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Prefix 'admin' bikin semua URL dimulai dengan '/admin', name('admin.') nambahin 'admin.' di depan nama routenya
+
+    // Route dashboard admin (yang sudah ada)
+    Route::get('/dashboard', function () {
+        // Double check keamanan - ini penting biar admin page aman banget
+        if (!auth()->check()) {
+            return redirect('/login')->with('error', 'Silakan login dulu!');
+        }
+        if (auth()->user()->role != 'admin') {
+            return redirect('/dashboard')->with('error', 'Kamu bukan admin!');
+        }
+        return view('dashboardadmin');
+    })->name('dashboard');
+
+    // ROUTE UNTUK HALAMAN USERS
+    Route::get('/users', function () {
+        // Cek login dan role admin lagi (penting untuk keamanan setiap halaman admin)
+        if (!auth()->check()) {
+            return redirect('/login')->with('error', 'Silakan login dulu!');
+        }
+        if (auth()->user()->role != 'admin') {
+            return redirect('/dashboard')->with('error', 'Kamu bukan admin!');
+        }
+
+        // Ambil semua pengguna dari database
+        $allUsers = \App\Models\User::all();
+
+        // Pisahkan pengguna berdasarkan role
+        // Filter() ini fungsi collection Laravel yg keren buat misahin data dengan cepet
+        $adminUsers = $allUsers->filter(function ($user) {
+            return $user->role === 'admin';
+        });
+
+        $regularUsers = $allUsers->filter(function ($user) {
+            return $user->role !== 'admin';
+        });
+
+        // Kirim data adminUsers dan regularUsers ke view
+        return view('admin.users_index', [
+            'adminUsers' => $adminUsers,
+            'regularUsers' => $regularUsers
+        ]);
+    })->name('users.index');
+
+    // UNTUK DELETE USER
+    Route::delete('/users/{user}', function (\App\Models\User $user) {
+        // Parameter {user} otomatis ambil data user dari database - ini fitur Route Model Binding Laravel
+        if (!auth()->check() || auth()->user()->role != 'admin') {
+            return redirect()->route('admin.users.index')->with('error', 'Aksi tidak diizinkan.');
+        }
+
+        // Cegah admin hapus diri sendiri - safety measure yang penting
+        if (auth()->id() == $user->id) {
+            return redirect()->route('admin.users.index')->with('error', 'Anda tidak dapat menghapus akun Anda sendiri.');
+        }
+
+        $userName = $user->name; // Simpan nama untuk pesan sukses
+        $user->delete();
+        return redirect()->route('admin.users.index')->with('success', "Pengguna '{$userName}' berhasil dihapus.");
+    })->name('users.destroy');
+
+    // TAMBAHKAN ROUTE UNTUK MENAMPILKAN FORM EDIT USER
+    Route::get('/users/{user}/edit', function (\App\Models\User $user) {
+        // Cek login dan role admin
+        if (!auth()->check() || auth()->user()->role != 'admin') {
+            return redirect()->route('admin.users.index')->with('error', 'Aksi tidak diizinkan.');
+        }
+        // Ini dummy return - harusnya nanti diganti sama view beneran
+        return "Halaman untuk mengedit User ID: " . $user->id . " (Nama: " . $user->name . "). Form edit akan ada di sini.";
+    })->name('users.edit');
+
+    // TAMBAHKAN ROUTE UNTUK MEMPROSES UPDATE USER (DARI FORM EDIT)
+    Route::put('/users/{user}', function (Request $request, \App\Models\User $user) {
+        // Cek login dan role admin
+        if (!auth()->check() || auth()->user()->role != 'admin') {
+            return redirect()->route('admin.users.index')->with('error', 'Aksi tidak diizinkan.');
+        }
+        // Juga masih dummy return - nanti isinya logic buat update user
+        return "Proses update untuk User ID: " . $user->id . ". Data dari form: " . json_encode($request->all());
+    })->name('users.update');
+
+    // Route admin lainnya bisa ditambahkan di sini
+});
+
+
+
+
 
 // ====================================================================
 // Product routes

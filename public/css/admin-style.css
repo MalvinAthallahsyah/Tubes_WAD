@@ -1,0 +1,236 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+/* Gaya dasar */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex; /* Mengaktifkan flexbox untuk body agar layout container bisa full height */
+}
+
+/* Container Utama untuk Layout Sidebar dan Konten */
+.admin-layout-container {
+    display: flex; /* Menyusun sidebar dan konten secara horizontal */
+    width: 100%;
+    min-height: 100vh; /* Tinggi minimal 100% viewport height */
+}
+
+/* Gaya untuk Sidebar (Menu Samping Kiri) */
+.admin-sidebar {
+    width: 260px; /* Lebar sidebar */
+    background-color: #2c3e50; /* Warna biru tua untuk sidebar */
+    color: white;
+    display: flex; /* Menggunakan flexbox untuk mengatur item di dalam sidebar */
+    flex-direction: column; /* Menyusun item secara vertikal */
+    padding: 20px 0; /* Padding atas-bawah, tanpa padding kiri-kanan */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Bayangan di kanan sidebar */
+}
+
+.admin-sidebar-header {
+    padding: 0 20px 20px 20px; /* Padding di sekitar brand */
+    text-align: center;
+    border-bottom: 1px solid #3b5068; /* Garis pemisah tipis */
+}
+
+.admin-brand {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.admin-sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    flex-grow: 1; /* Biarkan navigasi mengisi ruang yang tersedia */
+}
+
+.admin-sidebar-nav li .nav-link-item {
+    display: block; /* Membuat link mengisi seluruh lebar li */
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 12px 20px; /* Padding link navigasi */
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.admin-sidebar-nav li .nav-link-item:hover,
+.admin-sidebar-nav li .nav-link-item.active {
+    background-color: #3498db;
+    color: white;
+    padding-left: 25px; /* Sedikit indentasi saat aktif/hover */
+}
+
+.admin-sidebar-footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #3b5068; /* Garis pemisah tipis */
+    font-size: 0.9em;
+}
+
+.admin-sidebar-footer span {
+    display: block; /* Nama user di baris sendiri */
+    margin-bottom: 10px;
+}
+
+.admin-logout-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Tombol logout mengisi lebar footer */
+}
+
+.admin-logout-button:hover {
+    background-color: #c0392b;
+}
+
+/* Gaya untuk Konten Utama (Sebelah Kanan Sidebar) */
+.admin-main-content {
+    flex-grow: 1; /* Konten utama mengisi sisa ruang horizontal */
+    padding: 30px;
+    overflow-y: auto; /* Tambahkan scroll jika kontennya panjang */
+    background-color: #f4f7f6; /* Warna latar yang sama dengan body */
+}
+
+.admin-page-header h1 {
+    color: #2c3e50;
+    margin-top: 0;
+    border-bottom: 2px solid #dde4e9;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.admin-welcome-box {
+    background-color: #e8f6fd;
+    color: #31708f;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border-left: 5px solid #3498db;
+}
+
+/* Gaya untuk Info Card (tetap sama) */
+.admin-info-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* Sedikit perbesar jarak antar card */
+}
+
+.admin-info-card {
+    flex-grow: 1;
+    min-width: 260px; /* Sesuaikan min-width jika perlu */
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07);
+    text-align: center;
+    border-top: 4px solid;
+}
+
+.admin-info-card h5 {
+    margin-top: 0;
+    font-size: 1.15em; /* Sedikit perbesar judul card */
+    color: #444; /* Warna judul card sedikit lebih gelap */
+    margin-bottom: 10px;
+}
+
+.info-card-count {
+    font-size: 2.8em;
+    font-weight: 600;
+    margin: 10px 0 0 0;
+}
+
+.card-users {
+    border-top-color: #3498db;
+}
+.card-users .info-card-count {
+    color: #3498db;
+}
+
+.card-admins {
+    border-top-color: #2ecc71;
+}
+.card-admins .info-card-count {
+    color: #2ecc71;
+}
+
+.card-products {
+    border-top-color: #9b59b6;
+}
+.card-products .info-card-count {
+    color: #9b59b6;
+}
+
+/* ================================== USER DASHBOOARD STYLES ================================== */
+.table-container {
+    overflow-x: auto; /* Membuat tabel bisa di-scroll horizontal jika terlalu lebar */
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Menghilangkan spasi antar border sel */
+    font-size: 0.9em;
+}
+
+th,
+td {
+    border: 1px solid #ddd; /* Border tipis untuk sel */
+    padding: 10px; /* Jarak di dalam sel */
+    text-align: left; /* Teks rata kiri */
+    vertical-align: top; /* Konten sel mulai dari atas */
+}
+
+th {
+    background-color: #f2f2f2; /* Warna latar header tabel */
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Warna latar baris genap (zebra striping) */
+}
+
+.no-users {
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    border-radius: 4px;
+}
+
+.profile-photo-placeholder {
+    font-style: italic;
+    color: #888;
+}
+
+/* Action Button Styles */
+.action-buttons button {
+    /* Hanya menargetkan button karena <a> untuk edit sudah dihapus */
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85em;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+/* Delete Button */
+.action-buttons .btn-delete {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border-color: #dc3545;
+}
+
+.action-buttons .btn-delete:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}

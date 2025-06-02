@@ -24,17 +24,17 @@ class User extends Authenticatable // Using Authenticatable is fine even if auth
         'province',
         'postal_code',
         'profile_photo',
+        'role',
     ];
 
-    protected $hidden = [ // Standard practice
+    protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    protected function casts(): array // For newer Laravel versions
+    protected function casts(): array //
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
@@ -44,10 +44,14 @@ class User extends Authenticatable // Using Authenticatable is fine even if auth
         return $this->hasMany(Review::class);
     }
 
-    // role logic here:
-    // public function isAdmin(): bool
-    // {
-    //     // return $this->role === 'admin'; // Example
-    //     return false; // Placeholder
-    // }
+    // === METHOD UNTUK CEK APAKAH USER ADALAH ADMIN ===
+    /**
+     * Check if the user is an admin
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
 }
