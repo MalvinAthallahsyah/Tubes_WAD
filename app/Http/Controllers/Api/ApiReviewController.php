@@ -20,8 +20,8 @@ class ApiReviewController extends Controller
     {
         return response()->json([
             'product_id' => $product->id,
-            'average_rating' => $product->average_rating, // Uses accessor
-            'total_reviews' => $product->total_reviews,   // Uses accessor
+            'average_rating' => $product->average_rating,
+            'total_reviews' => $product->total_reviews,
             'rating_distribution' => $product->reviews()
                                     ->selectRaw('rating, count(*) as count')
                                     ->groupBy('rating')
@@ -42,8 +42,8 @@ class ApiReviewController extends Controller
         return response()->json([
             'seller_id' => $seller->id,
             'seller_name' => $seller->name,
-            'reputation_score' => $seller->reputation_score, // Uses accessor
-            'total_seller_reviews' => $seller->total_seller_reviews, // Uses accessor
+            'reputation_score' => $seller->reputation_score,
+            'total_seller_reviews' => $seller->total_seller_reviews,
         ]);
     }
 
