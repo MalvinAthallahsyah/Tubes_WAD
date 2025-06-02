@@ -12,10 +12,28 @@ body {
     line-height: 1.5;
 }
 
+/* Variables CSS untuk kemudahan maintenance (Opsional tapi disarankan) */
+:root {
+    --primary-color: #d70015;
+    --primary-color-hover: #b8000f;
+    --primary-color-border: #a8000e;
+    --text-color-primary: #1d1d1f;
+    --text-color-secondary: #6e6e73;
+    --background-color-light: #ffffff;
+    --background-color-page: #f5f5f7;
+    --border-color-soft: #e5e5e7;
+    --border-color-medium: #d2d2d7;
+    --border-radius-sm: 6px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --box-shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+
 .header {
-    background: #ffffff;
+    background: var(--background-color-light);
     padding: 1rem 2rem;
-    border-bottom: 1px solid #e5e5e7;
+    border-bottom: 1px solid var(--border-color-soft);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +45,7 @@ body {
     gap: 0.5rem;
     font-size: 1.5rem;
     font-weight: 600;
-    color: #d70015;
+    color: var(--primary-color);
 }
 
 .header-title i {
@@ -38,7 +56,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: #6e6e73;
+    color: var(--text-color-secondary);
     font-size: 0.95rem;
 }
 
@@ -46,7 +64,7 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #d70015;
+    background: var(--primary-color);
     color: white;
     display: flex;
     align-items: center;
@@ -56,9 +74,9 @@ body {
 }
 
 .nav-tabs {
-    background: #ffffff;
+    background: var(--background-color-light);
     padding: 0 2rem;
-    border-bottom: 1px solid #e5e5e7;
+    border-bottom: 1px solid var(--border-color-soft);
     display: flex;
     gap: 0;
 }
@@ -67,7 +85,7 @@ body {
     padding: 1rem 1.5rem;
     background: none;
     border: none;
-    color: #6e6e73;
+    color: var(--text-color-secondary);
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
@@ -79,15 +97,15 @@ body {
 }
 
 .nav-tab.active {
-    background: #d70015;
+    background: var(--primary-color);
     color: white;
-    border-radius: 6px;
+    border-radius: var(--border-radius-sm);
 }
 
 .nav-tab:not(.active):hover {
-    color: #1d1d1f;
-    background: #f5f5f7;
-    border-radius: 6px;
+    color: var(--text-color-primary);
+    background: var(--background-color-page);
+    border-radius: var(--border-radius-sm);
 }
 
 .main-content {
@@ -96,54 +114,61 @@ body {
     margin: 0 auto;
 }
 
-.container {
+.container { /* Ini bisa digunakan sebagai pembungkus umum */
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-.form-container {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e5e5e7;
-}
-
-.form-title {
+/* Judul Halaman Umum */
+.page-title { /* Menggantikan .form-title dan h1 yang serupa untuk konsistensi */
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1.375rem;
+    font-size: 1.375rem; /* Bisa disesuaikan atau dibuat lebih besar untuk H1 umum */
     font-weight: 600;
-    color: #d70015;
+    color: var(--primary-color);
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #e5e5e7;
+    border-bottom: 1px solid var(--border-color-soft);
 }
 
-.form-title i {
+.page-title i {
     font-size: 1.125rem;
 }
 
+/* Styling h1 yang lebih generik jika dibutuhkan di luar .page-title */
 h1 {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: #d70015;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e5e5e7;
+    font-size: 1.75rem; /* Contoh ukuran berbeda untuk H1 umum */
+    font-weight: 700;
+    color: var(--text-color-primary);
+    margin-bottom: 1.5rem;
 }
+
+
+.form-container, /* Menggabungkan dengan form.default-styled-form */
+form.default-styled-form {
+    background: var(--background-color-light);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid var(--border-color-soft);
+    margin-bottom: 2rem; /* Tambah jarak jika ada elemen lain di bawah form */
+}
+
 
 .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Default 2 kolom */
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
+
+/* Jika ada form yang tidak perlu grid 2 kolom, bisa pakai 1fr saja atau tidak pakai .form-grid */
+.form-grid.single-column {
+    grid-template-columns: 1fr;
+}
+
 
 .form-group {
     display: flex;
@@ -151,47 +176,56 @@ h1 {
 }
 
 .form-group.full-width {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /* Span semua kolom grid */
 }
 
-.mb-3 {
+.mb-3 { /* Utility class, sudah ada */
     margin-bottom: 1.5rem;
 }
 
-.form-label,
-label {
+.form-label, /* Menggunakan .form-label saja untuk konsistensi */
+label { /* Dihapus agar tidak terlalu global, target label via .form-label atau spesifik */
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--text-color-primary);
     margin-bottom: 0.5rem;
     display: block;
 }
 
-.form-label .required,
-label:after {
-    color: #d70015;
+.form-label::after, /* Menggunakan ::after pada .form-label */
+label::after { /* Dihapus */
+    color: var(--primary-color);
+    margin-left: 2px;
+    content: " *"; /* Hanya muncul jika label memiliki kelas .required atau sejenisnya, atau handle di HTML */
+}
+
+/* Untuk label yang memang required, tambahkan kelas .required pada label di HTML */
+label.required::after {
+    color: var(--primary-color);
     margin-left: 2px;
     content: " *";
 }
 
+
 .form-control {
     padding: 0.75rem 1rem;
-    border: 1px solid #d2d2d7;
-    border-radius: 8px;
+    border: 1px solid var(--border-color-medium);
+    border-radius: var(--border-radius-md);
     font-size: 1rem;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    background: #ffffff;
+    background: var(--background-color-light);
     width: 100%;
 }
 
-.form-control:focus {
-    outline: none;
-    border-color: #d70015;
+.form-control:focus,
+.form-control:focus-visible { /* Menggabungkan :focus dan :focus-visible */
+    outline: none; /* Atau outline: 2px solid var(--primary-color); outline-offset: 2px; */
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(215, 0, 21, 0.1);
 }
 
 .form-control:hover {
-    border-color: #a8a8a8;
+    border-color: #a8a8a8; /* Warna hover bisa juga dari variable */
 }
 
 select.form-control {
@@ -200,270 +234,16 @@ select.form-control {
     background-position: right 0.75rem center;
     background-repeat: no-repeat;
     background-size: 1.5em 1.5em;
-    padding-right: 2.5rem;
-    appearance: none;
+    padding-right: 2.5rem; /* Pastikan padding cukup untuk arrow */
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
 }
 
 textarea.form-control {
     min-height: 120px;
     resize: vertical;
-    font-family: inherit;
-}
-
-input[type="file"].form-control {
-    padding: 0.5rem;
-    cursor: pointer;
-}
-
-.image-upload-area {
-    border: 2px dashed #d2d2d7;
-    border-radius: 12px;
-    padding: 3rem 2rem;
-    text-align: center;
-    background: #fbfbfd;
-    transition: border-color 0.2s ease, background-color 0.2s ease,
-        transform 0.2s ease;
-    cursor: pointer;
-    position: relative;
-}
-
-.image-upload-area:hover {
-    border-color: #d70015;
-    background: #fef7f7;
-}
-
-.image-upload-area.dragover {
-    border-color: #d70015;
-    background: #fef7f7;
-    transform: scale(1.02);
-}
-
-.upload-icon {
-    font-size: 3rem;
-    color: #d2d2d7;
-    margin-bottom: 1rem;
-}
-
-.upload-text {
-    font-size: 1.125rem;
-    color: #1d1d1f;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.upload-subtext {
-    font-size: 0.875rem;
-    color: #6e6e73;
-}
-
-.upload-link {
-    color: #d70015;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.upload-link:hover {
-    text-decoration: underline;
-}
-
-.file-input {
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-}
-
-.btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease,
-        box-shadow 0.2s ease;
-    border: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    line-height: 1;
-}
-
-.btn-secondary {
-    background: #f5f5f7;
-    color: #6e6e73;
-    border: 1px solid #d2d2d7;
-}
-
-.btn-secondary:hover {
-    background: #e8e8ed;
-    color: #1d1d1f;
-}
-
-/* All buttons styled with red color */
-.btn-primary,
-.btn-success,
-.btn-warning,
-.btn-danger {
-    color: #fff;
-    background-color: #d70015;
-    border-color: #d70015;
-}
-
-.btn-primary:hover,
-.btn-success:hover,
-.btn-warning:hover,
-.btn-danger:hover {
-    background-color: #b8000f;
-    border-color: #a8000e;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(215, 0, 21, 0.3);
-}
-
-.table th,
-.table td {
-    padding: 0.75rem 1rem;
-    vertical-align: middle;
-    text-align: left;
-}
-
-.table td img {
-    max-width: 80px;
-    height: auto;
-    display: block;
-    margin-right: 1rem;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e5e5e7;
-}
-
-.actions-box {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.actions-box .form-delete-inline {
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    margin: 0;
-    display: inline-block;
-}
-
-form.default-styled-form {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e5e5e7;
-}
-
-.product-page-title {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.btn-add-product {
-    margin-bottom: 1.5rem !important;
-}
-
-.product-table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    border-collapse: collapse;
-}
-
-.product-table th,
-.product-table td {
-    padding: 0.75rem;
-    vertical-align: middle;
-    border-top: 1px solid #dee2e6;
-}
-
-.product-table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    background-color: #f8f9fa;
-    text-align: center;
-}
-
-.product-table img {
-    max-width: 80px;
-    height: auto;
-    border-radius: 4px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.actions-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.form-delete-inline {
-    display: inline-block;
-    margin: 0;
-}
-
-.actions-box .btn {
-    margin-bottom: 0 !important;
-}
-
-.btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.btn.loading {
-    position: relative;
-    color: transparent !important;
-}
-
-.btn.loading::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 2px solid transparent;
-    border-top-color: #ffffff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
-.form-control:focus-visible {
-    outline: 2px solid #d70015;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(215, 0, 21, 0.1);
+    font-family: inherit; /* Pastikan font sama dengan input lain */
 }
 
 textarea.form-control::-webkit-scrollbar {
@@ -476,10 +256,461 @@ textarea.form-control::-webkit-scrollbar-track {
 }
 
 textarea.form-control::-webkit-scrollbar-thumb {
-    background: #d70015;
+    background: var(--primary-color);
     border-radius: 4px;
 }
 
 textarea.form-control::-webkit-scrollbar-thumb:hover {
-    background: #b8000f;
+    background: var(--primary-color-hover);
+}
+
+
+input[type="file"].form-control {
+    padding: 0.5rem; /* Disesuaikan agar terlihat baik */
+    cursor: pointer;
+}
+
+/* Gaya untuk area upload gambar yang lebih menarik */
+.image-upload-area {
+    border: 2px dashed var(--border-color-medium);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem; /* Disesuaikan */
+    text-align: center;
+    background: #fbfbfd; /* Warna lebih terang dari page background */
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 1.5rem; /* Jarak jika ada elemen di bawahnya */
+}
+
+.image-upload-area:hover,
+.image-upload-area.dragover {
+    border-color: var(--primary-color);
+    background: #fef7f7; /* Warna hover yang lembut */
+}
+
+.image-upload-area.dragover { /* Efek saat drag over */
+    transform: scale(1.02);
+}
+
+.upload-icon { /* Untuk ikon di dalam area upload */
+    font-size: 2.5rem; /* Disesuaikan */
+    color: var(--border-color-medium);
+    margin-bottom: 0.75rem; /* Disesuaikan */
+}
+
+.upload-text {
+    font-size: 1.125rem;
+    color: var(--text-color-primary);
+    margin-bottom: 0.25rem; /* Disesuaikan */
+    font-weight: 500;
+}
+
+.upload-subtext {
+    font-size: 0.875rem;
+    color: var(--text-color-secondary);
+}
+
+.upload-link { /* Jika ada teks 'or browse files' */
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+.upload-link:hover {
+    text-decoration: underline;
+}
+
+.file-input { /* Input file tersembunyi untuk area upload custom */
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    line-height: 1; /* Untuk konsistensi tinggi tombol */
+}
+
+.btn-secondary {
+    background: var(--background-color-page);
+    color: var(--text-color-secondary);
+    border: 1px solid var(--border-color-medium);
+}
+.btn-secondary:hover {
+    background: #e8e8ed;
+    color: var(--text-color-primary);
+}
+
+/* Tombol Utama (Merah) */
+.btn-primary,
+.btn-danger, /* Biasanya .btn-danger untuk aksi destruktif, bisa diberi warna berbeda jika perlu */
+.btn-submit, /* Kelas baru untuk tombol submit utama form */
+.btn-add-product { /* Menggunakan kelas ini juga */
+    color: #fff;
+    background-color: var(--primary-color);
+    /* border-color: var(--primary-color); Hilangkan jika tidak ada border default */
+}
+.btn-primary:hover,
+.btn-danger:hover,
+.btn-submit:hover,
+.btn-add-product:hover {
+    background-color: var(--primary-color-hover);
+    /* border-color: var(--primary-color-border); */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(215, 0, 21, 0.3);
+}
+
+/* Tombol Sukses (Hijau) - contoh jika ingin warna berbeda */
+.btn-success {
+    color: #fff;
+    background-color: #28a745; /* Warna hijau */
+    /* border-color: #28a745; */
+}
+.btn-success:hover {
+    background-color: #218838;
+    /* border-color: #1e7e34; */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2); /* Shadow disesuaikan */
+}
+
+/* Tombol Peringatan (Kuning) - contoh */
+.btn-warning {
+    color: var(--text-color-primary);
+    background-color: #ffc107; /* Warna kuning */
+    /* border-color: #ffc107; */
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+    /* border-color: #d39e00; */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+}
+
+
+.table th,
+.table td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    text-align: left;
+    border-top: 1px solid var(--border-color-soft); /* Konsisten dengan border lain */
+}
+
+/* Styling tabel produk yang lebih spesifik */
+.product-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: var(--text-color-primary);
+    border-collapse: collapse; /* Lebih baik dari border-top di setiap td/th jika ingin border antar sel */
+    border: 1px solid var(--border-color-soft); /* Border luar tabel */
+}
+
+.product-table th,
+.product-table td {
+    padding: 0.75rem 1rem; /* Padding konsisten */
+    vertical-align: middle;
+    text-align: left; /* Default kiri, bisa di-override per kolom */
+    border: 1px solid var(--border-color-soft); /* Border untuk setiap sel */
+}
+
+.product-table thead th {
+    vertical-align: bottom;
+    background-color: #f8f9fa; /* Warna header tabel yang lembut */
+    font-weight: 600; /* Header lebih tebal */
+    /* text-align: center; Dihapus, default kiri, sesuaikan jika perlu per kolom */
+}
+
+.product-table img {
+    max-width: 80px; /* Ukuran gambar di tabel */
+    height: auto;
+    border-radius: var(--border-radius-sm);
+    display: block; /* Untuk margin auto bekerja jika diperlukan */
+    /* margin-left: auto; margin-right: auto; Dihapus, default kiri */
+}
+
+/* Aksi di dalam tabel atau form */
+.form-actions { /* Untuk grup tombol di akhir form */
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color-soft);
+}
+
+.actions-box { /* Untuk grup tombol aksi di tabel atau tempat lain, disatukan */
+    display: flex; /* Menggunakan flex untuk alignment dan gap */
+    justify-content: center; /* Default center, bisa diubah jika perlu */
+    align-items: center;
+    gap: 0.75rem; /* Gap antar tombol/link aksi */
+}
+
+.actions-box .btn { /* Tombol di dalam actions-box */
+    margin-bottom: 0 !important; /* Override .mb-3 jika ada */
+    padding: 0.5rem 1rem; /* Tombol aksi bisa sedikit lebih kecil */
+    font-size: 0.875rem;
+}
+
+.form-delete-inline { /* Untuk form delete yang inline */
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.form-delete-inline .btn-danger { /* Tombol delete di form inline */
+    background: none !important;
+    color: var(--primary-color) !important; /* Warna merah tapi tanpa background */
+    padding: 0.25rem 0.5rem !important; /* Lebih kecil lagi */
+    font-weight: 500;
+}
+.form-delete-inline .btn-danger:hover {
+    text-decoration: underline;
+    background: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn.loading {
+    position: relative;
+    color: transparent !important; /* Teks menghilang saat loading */
+}
+
+.btn.loading::after { /* Spinner */
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: #ffffff; /* Warna spinner */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Posisi spinner di tengah tombol */
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* BARU: Layout untuk Halaman Detail Produk */
+.product-detail-layout {
+    display: flex;
+    flex-wrap: wrap; /* Agar responsif di layar kecil, kolom bisa turun */
+    gap: 2rem; /* Jarak antar kolom utama */
+    background-color: var(--background-color-light);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid var(--border-color-soft);
+}
+
+.product-image-column {
+    flex: 1 1 300px; /* Bisa membesar, bisa mengecil, basis 300px */
+    min-width: 280px; /* Lebar minimum sebelum turun */
+    display: flex;
+    flex-direction: column; /* Jika ada thumbnail di bawah gambar utama */
+    align-items: center; /* Pusatkan gambar utama jika ada ruang lebih */
+}
+
+.product-image-column .main-product-image {
+    width: 100%;
+    max-width: 400px; /* Batasi lebar maksimum gambar utama */
+    height: auto;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color-soft);
+    margin-bottom: 1rem; /* Jarak ke thumbnail jika ada */
+    object-fit: cover; /* Atau contain, tergantung rasio gambar */
+}
+
+/* Jika ada thumbnail di bawah gambar utama (opsional) */
+.product-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+.product-thumbnails img {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color-medium);
+    cursor: pointer;
+    object-fit: cover;
+    transition: border-color 0.2s ease;
+}
+.product-thumbnails img:hover,
+.product-thumbnails img.active-thumbnail {
+    border-color: var(--primary-color);
+}
+
+
+.product-info-column {
+    flex: 2 1 400px; /* Bisa membesar 2x dari image, bisa mengecil, basis 400px */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Jarak antar elemen di kolom info */
+}
+
+.product-info-column .product-name { /* Menggunakan kelas spesifik, bukan h1 global */
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color-primary);
+    margin-bottom: 0.5rem; /* Mengurangi margin bawah default h1 */
+    border-bottom: none; /* Hapus border bawah jika tidak diinginkan di sini */
+    padding-bottom: 0;
+}
+
+.product-info-column .product-category,
+.product-info-column .product-seller {
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 0.25rem;
+}
+.product-info-column .product-seller a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.product-info-column .product-seller a:hover {
+    text-decoration: underline;
+}
+
+.product-info-column .product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.product-info-column .product-stock {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+.product-info-column .product-stock .in-stock {
+    color: #28a745; /* Hijau untuk stok tersedia */
+    font-weight: 600;
+}
+.product-info-column .product-stock .out-of-stock {
+    color: var(--primary-color); /* Merah untuk habis */
+    font-weight: 600;
+}
+
+.product-info-column .product-description-short {
+    color: var(--text-color-primary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.product-actions { /* Untuk tombol Add to Cart dan Wishlist */
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.product-actions .btn { /* Tombol di product-actions */
+    flex-grow: 1; /* Tombol bisa memanjang jika perlu */
+}
+.product-actions .btn-wishlist { /* Contoh styling tombol wishlist */
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.product-actions .btn-wishlist:hover {
+    background-color: rgba(215, 0, 21, 0.05); /* Warna hover lembut */
+    /* transform: none; box-shadow: none; Jika tidak ingin efek hover utama */
+}
+
+/* Bagian Review (Contoh dasar, bisa diperluas) */
+.product-reviews-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color-soft);
+}
+.product-reviews-section .section-title { /* Mirip .page-title tapi mungkin tanpa border bawah */
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    margin-bottom: 1.5rem;
+}
+.product-review-item {
+    border-bottom: 1px solid var(--border-color-soft);
+    padding: 1rem 0;
+}
+.product-review-item:last-child {
+    border-bottom: none;
+}
+.product-review-item .reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.product-review-item .reviewer-avatar {
+    width: 30px; /* Avatar lebih kecil */
+    height: 30px;
+    /* ... styling avatar seperti .user-avatar ... */
+}
+.product-review-item .reviewer-name {
+    font-weight: 600;
+}
+.product-review-item .review-rating .stars {
+    color: #f8c325; /* Warna bintang kuning */
+}
+.product-review-item .review-text {
+    font-size: 0.95rem;
+    color: var(--text-color-secondary);
+}
+
+/* Media Queries untuk Responsif (Contoh sangat dasar) */
+@media (max-width: 768px) {
+    .product-detail-layout {
+        flex-direction: column; /* Kolom akan bertumpuk di layar kecil */
+    }
+    .product-image-column,
+    .product-info-column {
+        flex-basis: 100%; /* Mengambil lebar penuh saat bertumpuk */
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Form menjadi satu kolom */
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    .nav-tabs {
+        padding: 0 1rem;
+        overflow-x: auto; /* Agar tab bisa di-scroll jika banyak */
+    }
+    .nav-tab {
+        padding: 0.75rem 1rem;
+    }
+    .main-content, .container {
+        padding: 1rem;
+    }
 }
