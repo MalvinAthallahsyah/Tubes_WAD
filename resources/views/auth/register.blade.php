@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Telkom Marketplace</title>
+    <title>Telkom Marketplace</title>
     <!-- Cara import CSS langsung (untuk pemula) -->
     <link rel="stylesheet" href="{{ asset('css/login-register.css') }}">
     <style>
