@@ -47,6 +47,7 @@
                                     </td>
                                     <td>{{ $product->name }}</td>
                                     {{-- Format harga jadi pake ribuan separator biar enak diliat --}}
+                                    <td>{{ $product->category ? $product->category->name : 'Uncategorized' }}</td>
                                     <td>Rp {{ number_format($product->price, 0, ',', '.') }}</td>
                                     <td>{{ $product->stock }}</td>
                                     {{-- Carbon itu library buat format tanggal --}}
