@@ -7,9 +7,9 @@
         <div class="max-w-2xl mx-auto bg-white shadow-xl rounded-xl p-6 md:p-8">
             <h1 class="text-xl md:text-2xl font-semibold text-gray-900 mb-2 text-center"> {{-- Menghapus dark:text-gray-100 --}}
                 @if(isset($review))
-                    Update Your Feedback for: {{ $reviewable->name }}
+                    Update Your Feedback for {{ $reviewable->name }}
                 @else
-                    Share Your Feedback on: {{ $reviewable->name }}
+                    Share Your Feedback on {{ $reviewable->name }}
                 @endif
             </h1>
             <p class="text-center text-sm text-gray-500 mb-6"> {{-- Menghapus dark:text-gray-400 --}}
@@ -27,23 +27,6 @@
                     <input type="hidden" name="product_id" value="{{ $reviewable->id }}">
                 @elseif($type === 'seller' && !isset($review))
                     <input type="hidden" name="seller_id" value="{{ $reviewable->id }}">
-                @endif
-
-                {{-- Temporary User ID input - REMOVE WHEN AUTH IS INTEGRATED --}}
-                @if(!isset($review))
-                <div>
-                    {{-- Menghapus dark:text-gray-300 dari label --}}
-                    <label for="user_id" class="block text-sm font-medium text-gray-700 mb-1">
-                        Your User ID (sementara aja ini buat ngetes) <span class="text-red-500">*</span>
-                        {{-- Menghapus dark:text-indigo-400 dari link, sesuaikan jika perlu --}}
-                        (<a href="{{ route('show-users-for-id') }}" target="_blank" class="text-blue-500 hover:underline">Find Test IDs</a>)
-                    </label>
-                    {{-- Menghapus dark:border-gray-600, dark:bg-gray-700, dark:text-white dari input --}}
-                    <input type="number" name="user_id" id="user_id" value="{{ old('user_id', $review->user_id ?? '') }}" required
-                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm @error('user_id') border-red-500 @enderror"
-                           placeholder="Enter your user ID (e.g., 1)">
-                    @error('user_id') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                </div>
                 @endif
 
                 {{-- Overall Rating --}}
