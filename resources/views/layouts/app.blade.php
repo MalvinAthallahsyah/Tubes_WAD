@@ -25,4 +25,4 @@
 
     @yield('scripts') {{-- Untuk JavaScript spesifik per halaman --}}
 </body>
-</html> 
+</html>
