@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage; // <-- DITAMBAHKAN: Untuk Storage::disk()
+use Illuminate\Support\Facades\Storage; // Untuk Storage::disk()
 
 class ProductController extends Controller
 {

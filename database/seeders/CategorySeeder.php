@@ -13,12 +13,18 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::insert([
-            ['name' => 'Secondhand'],
-            ['name' => 'Student-Made'],
-            ['name' => 'Services'],
-            ['name' => 'Books'],
-            ['name' => 'Electronics'],
-        ]);
+        $categories = [
+            'Secondhand',
+            'Student-Made',
+            'Services',
+            'Books',
+            'Electronics',
+        ];
+
+        foreach ($categories as $categoryName) {
+            Category::firstOrCreate(['name' => $categoryName]);
+        }
+
+        $this->command->info('Categories seeded successfully!');
     }
 }
