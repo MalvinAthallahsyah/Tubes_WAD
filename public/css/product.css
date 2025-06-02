@@ -1,5 +1,3 @@
-/* Product Management CSS */
-
 * {
     margin: 0;
     padding: 0;
@@ -7,13 +5,13 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
     background-color: #f5f5f7;
     color: #1d1d1f;
     line-height: 1.5;
 }
 
-/* Header */
 .header {
     background: #ffffff;
     padding: 1rem 2rem;
@@ -57,7 +55,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Navigation Tabs */
 .nav-tabs {
     background: #ffffff;
     padding: 0 2rem;
@@ -93,7 +90,6 @@ body {
     border-radius: 6px;
 }
 
-/* Main Content */
 .main-content {
     padding: 2rem;
     max-width: 1200px;
@@ -130,7 +126,6 @@ body {
     font-size: 1.125rem;
 }
 
-/* Main heading styles */
 h1 {
     display: flex;
     align-items: center;
@@ -143,7 +138,6 @@ h1 {
     border-bottom: 1px solid #e5e5e7;
 }
 
-/* Form Layout */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -164,7 +158,6 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
-/* Form Labels */
 .form-label,
 label {
     font-size: 0.875rem;
@@ -181,7 +174,6 @@ label:after {
     content: " *";
 }
 
-/* Form Controls */
 .form-control {
     padding: 0.75rem 1rem;
     border: 1px solid #d2d2d7;
@@ -202,7 +194,6 @@ label:after {
     border-color: #a8a8a8;
 }
 
-/* Select Dropdown */
 select.form-control {
     cursor: pointer;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
@@ -215,27 +206,25 @@ select.form-control {
     -moz-appearance: none;
 }
 
-/* Textarea */
 textarea.form-control {
     min-height: 120px;
     resize: vertical;
     font-family: inherit;
 }
 
-/* File Input */
 input[type="file"].form-control {
     padding: 0.5rem;
     cursor: pointer;
 }
 
-/* Image Upload Area */
 .image-upload-area {
     border: 2px dashed #d2d2d7;
     border-radius: 12px;
     padding: 3rem 2rem;
     text-align: center;
     background: #fbfbfd;
-    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease,
+        transform 0.2s ease;
     cursor: pointer;
     position: relative;
 }
@@ -279,7 +268,6 @@ input[type="file"].form-control {
     text-decoration: underline;
 }
 
-/* Hidden file input */
 .file-input {
     position: absolute;
     opacity: 0;
@@ -290,14 +278,14 @@ input[type="file"].form-control {
     cursor: pointer;
 }
 
-/* Buttons */
 .btn {
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease,
+        box-shadow 0.2s ease;
     border: none;
     display: inline-flex;
     align-items: center;
@@ -331,26 +319,20 @@ input[type="file"].form-control {
     box-shadow: 0 4px 12px rgba(215, 0, 21, 0.3);
 }
 
-/* AWAL STYLE UNTUK TABEL PRODUK */
-/* Memberikan jarak pada sel header dan data di tabel produk */
 .table th,
 .table td {
-    padding: 0.75rem 1rem; /* Atas-bawah 0.75rem, Kiri-kanan 1rem. Sesuaikan nilainya jika perlu. */
-    vertical-align: middle; /* Agar konten sel (gambar, teks, tombol) sejajar di tengah secara vertikal */
-    text-align: left; /* Pastikan teks rata kiri */
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    text-align: left;
 }
 
-/* Khusus untuk kolom gambar agar tidak terlalu banyak padding jika gambar kecil */
 .table td img {
     max-width: 80px;
     height: auto;
     display: block;
-    margin-right: 1rem; /* Beri jarak kanan pada gambar jika ada teks setelahnya */
+    margin-right: 1rem;
 }
-/* AKHIR STYLE UNTUK TABEL PRODUK */
 
-
-/* Form Actions (biasanya untuk tombol submit/cancel di akhir form besar) */
 .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -360,7 +342,6 @@ input[type="file"].form-control {
     border-top: 1px solid #e5e5e7;
 }
 
-/* AWAL STYLE UNTUK TOMBOL AKSI EDIT/DELETE DI TABEL */
 .actions-box {
     display: inline-flex;
     align-items: center;
@@ -375,10 +356,7 @@ input[type="file"].form-control {
     margin: 0;
     display: inline-block;
 }
-/* AKHIR STYLE UNTUK TOMBOL AKSI EDIT/DELETE DI TABEL */
 
-
-/* Form wrapper for better styling (UNTUK FORM UMUM) */
 form.default-styled-form {
     background: #ffffff;
     border-radius: 12px;
@@ -387,102 +365,91 @@ form.default-styled-form {
     border: 1px solid #e5e5e7;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-
-    .nav-tabs {
-        padding: 0 1rem;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .main-content,
-    .container {
-        padding: 1rem;
-    }
-
-    .form-container,
-    form.default-styled-form {
-        padding: 1.5rem;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .form-actions {
-        flex-direction: column;
-    }
-
-    .btn {
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* AWAL STYLE RESPONSIVE UNTUK TABEL DAN TOMBOL AKSI EDIT/DELETE DI TABEL */
-    .table th,
-    .table td {
-        padding: 0.5rem;
-        font-size: 0.875rem;
-        text-align: center; 
-        vertical-align: middle;
-    }
-
-    .actions-box {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
-    }
-    .actions-box .btn,
-    .actions-box .form-delete-inline button {
-        width: 100%;
-    }
-    .actions-box .form-delete-inline {
-        width: 100%;
-    }
-    /* AKHIR STYLE RESPONSIVE UNTUK TABEL DAN TOMBOL AKSI EDIT/DELETE DI TABEL */
-
-
-    .mb-3 {
-        margin-bottom: 1rem;
-    }
+.product-page-title {
+    margin-bottom: 20px;
+    color: #333;
 }
 
-@media (max-width: 480px) {
-    .form-container,
-    form.default-styled-form {
-        padding: 1rem;
-    }
-
-    h1,
-    .form-title {
-        font-size: 1.25rem;
-    }
-
-    .image-upload-area {
-        padding: 2rem 1rem;
-    }
-
-    .upload-icon {
-        font-size: 2rem;
-    }
-
-    .table th,
-    .table td {
-        padding: 0.5rem 0.25rem;
-        font-size: 0.8rem;
-    }
+.btn-add-product {
+    margin-bottom: 1.5rem !important;
 }
 
-/* Loading State */
+.product-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.product-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.product-table img {
+    max-width: 80px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.actions-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-delete-inline {
+    display: inline-block;
+    margin: 0;
+}
+
+.actions-box .btn {
+    margin-bottom: 0 !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-warning {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+.btn-warning:hover {
+    background-color: #ffca2c;
+    border-color: #ffc720;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+}
+
 .btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -508,18 +475,126 @@ form.default-styled-form {
 }
 
 @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
-/* Focus management for accessibility */
 .form-control:focus-visible {
     outline: 2px solid #d70015;
     outline-offset: 2px;
     box-shadow: 0 0 0 3px rgba(215, 0, 21, 0.1);
 }
 
-/* Custom scrollbar for textarea */
+textarea.form-control::-webkit-scrollbar {
+    width: 8px;
+}
+
+textarea.form-control::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+textarea.form-control::-webkit-scrollbar-thumb {
+    background: #d70015;
+    border-radius: 4px;
+}
+
+textarea.form-control::-webkit-scrollbar-thumb:hover {
+    background: #b8000f;
+}
+
+
+.form-delete-inline {
+    display: inline-block;
+    margin: 0;
+}
+
+
+.actions-box .btn {
+
+    margin-bottom: 0 !important;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+
+.btn-warning {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #ffca2c;
+    border-color: #ffc720;
+}
+
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+}
+
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn.loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.form-control:focus-visible {
+    outline: 2px solid #d70015;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(215, 0, 21, 0.1);
+}
+
 textarea.form-control::-webkit-scrollbar {
     width: 8px;
 }

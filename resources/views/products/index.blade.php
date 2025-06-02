@@ -1,12 +1,17 @@
 @extends('layouts.app')
 
+{{-- Tambahkan section ini untuk me-link product.css --}}
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/product.css') }}">
+@endsection
+
 @section('content')
 
     <div class="container">
-        <h1>Product List</h1>
-        <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add Product</a>
+        <h1 class="product-page-title">Product List</h1>
+        <a href="{{ route('products.create') }}" class="btn btn-primary btn-add-product mb-3">Add Product</a>
 
-        <table class="table table-bordered text-center">
+        <table class="table table-bordered text-center product-table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -26,19 +31,17 @@
                         <td>{{ $product->stock }}</td>
                         <td>
                             @if($product->image_path)
-                                <img src="{{ asset('storage/' . $product->image_path) }}" width="80">
+                                <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
                             @endif
                         </td>
                         <td>
-                            {{-- BUAT WADAH BARU DI SINI --}}
                             <div class="actions-box">
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary mb-3">Edit</a>
+                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
 
-                                {{-- Tombol Delete --}}
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="form-delete-inline" onsubmit="return confirm('Are you sure want to delete this product?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-primary mb-3">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </div>
                         </td>

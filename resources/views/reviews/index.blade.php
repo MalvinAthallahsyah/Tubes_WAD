@@ -51,7 +51,7 @@
             </div>
 
             <div class="mt-8">
-                {{ $reviews->links() }} {{-- Ensure your pagination views are styled with Tailwind --}}
+                {{ $reviews->links() }}
             </div>
         @endif
     </div>
