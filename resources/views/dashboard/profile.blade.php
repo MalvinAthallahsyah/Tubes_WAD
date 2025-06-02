@@ -13,56 +13,9 @@
 
 </head>
 <body>
-    <!-- Navbar dari file dashboard.css -->
-    <div class="navbar">
-        <!-- Logo -->
-        <div class="logo">
-            <div class="logo-img">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo">
-            </div>
-            <div class="logo-text">Telkom Marketplace</div>
-        </div>
 
-        <!-- Kotak pencarian -->
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="Cari produk...">
-            <button class="search-button">
-                <span class="material-icons">search</span>
-            </button>
-        </div>
+    @include('navbar')
 
-        <!-- Icon kanan -->
-        <div class="profile" tabindex="0">
-            <span class="material-icons profile-icon">person</span>
-
-            <!-- Menu dropdown profil -->
-            <div class="profile-dropdown">
-                <div class="dropdown-item">
-                    <span class="material-icons">account_circle</span>
-                    <a href="{{ route('dashboard.profile') }}">Profil Saya</a>
-                </div>
-                <div class="dropdown-item">
-                    <span class="material-icons">inventory</span>
-                    <a href="#products">Produk Saya</a>
-                </div>
-                <div class="dropdown-divider"></div>
-                <div class="dropdown-item">
-                    <span class="material-icons">exit_to_app</span>
-                    <form action="{{ route('logout') }}" method="POST" class="logout-form">
-                        @csrf
-                        <button type="submit" class="logout-dropdown-btn">Logout</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Icon lainnya -->
-        <div class="icons">
-            <span class="material-icons nav-icon">chat_bubble_outline</span>
-            <span class="material-icons nav-icon">shopping_cart</span>
-            <span class="material-icons nav-icon">favorite_border</span>
-        </div>
-    </div>
 
     <!-- Container profil -->
     <div class="profile-container">
