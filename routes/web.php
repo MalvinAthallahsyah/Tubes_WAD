@@ -8,7 +8,7 @@ use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DashboardController; // <-- DITAMBAHKAN
+use App\Http\Controllers\DashboardController;
 use App\Models\User;
 use App\Models\Seller;
 use App\Models\Product;
@@ -30,7 +30,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware('auth')->group(function () {
     // Ini middleware 'auth' buat pastiin user udah login, kalo belom ya dilempar ke login page dulu
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        // Pass the authenticated user to the view
+        return view('dashboard', [
+            'user' => auth()->user(),
+            'products' => \App\Models\Product::with('category')->latest()->get()
+        ]);
     })->name('dashboard');
 
     Route::get('/dashboard/profile', function () {
@@ -153,6 +157,34 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Juga masih dummy return - nanti isinya logic buat update user
         return "Proses update untuk User ID: " . $user->id . ". Data dari form: " . json_encode($request->all());
     })->name('users.update');
+
+    // Products routes
+    Route::get('/products', function () {
+        // Validasi apakah user adalah admin
+        if (!auth()->check() || auth()->user()->role != 'admin') {
+            return redirect('/login');
+        }
+
+        $products = \App\Models\Product::with('category')->latest()->get();
+        return view('admin.products_index', compact('products'));
+    })->name('products.index');
+
+    Route::delete('/products/{product}', function (\App\Models\Product $product) {
+        // Validasi apakah user adalah admin
+        if (!auth()->check() || auth()->user()->role != 'admin') {
+            return redirect()->route('admin.products.index')->with('error', 'Unauthorized action.');
+        }
+
+        // Hapus file gambar jika ada
+        if ($product->image_path && \Storage::exists('public/' . $product->image_path)) {
+            \Storage::delete('public/' . $product->image_path);
+        }
+
+        $product->delete();
+
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Product deleted successfully.');
+    })->name('products.destroy');
 
     // Route admin lainnya bisa ditambahkan di sini
 });

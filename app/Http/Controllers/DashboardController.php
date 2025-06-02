@@ -18,13 +18,10 @@ class DashboardController extends Controller
         // Ambil data pengguna yang sedang login
         $user = Auth::user();
 
-        // Ambil data produk.
-        // Contoh: mengambil 8 produk terbaru
+        // Ambil data produk
         $products = Product::latest()->take(8)->get();
-        // Atau jika Anda ingin menampilkan semua produk:
-        // $products = Product::all();
 
-        return view('dashboard', [ // Pastikan Anda memiliki view 'dashboard.blade.php'
+        return view('dashboard', [
             'user' => $user,
             'products' => $products,
         ]);

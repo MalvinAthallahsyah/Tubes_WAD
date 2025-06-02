@@ -21,6 +21,10 @@ return new class extends Migration
         $table->string('image_path');
         $table->timestamps();
         });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreignId('seller_id')->nullable()->constrained('sellers')->after('category_id');
+        });
     }
 
     /**
@@ -30,5 +34,4 @@ return new class extends Migration
     {
     Schema::dropIfExists('products');
     }
-
 };
