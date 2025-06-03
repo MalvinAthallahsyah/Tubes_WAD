@@ -7,20 +7,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    {{-- Link for Material Icons if you are using them in the navbar --}}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <style>
-        body {
-            font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-                         'Segoe UI Symbol', 'Noto Color Emoji';
-        }
-    </style>
 </head>
-<body class="font-sans antialiased bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
+<body class="font-poppins antialiased bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex flex-col min-h-screen">
     @php use Illuminate\Support\Facades\Auth; @endphp {{-- Moved Auth import here for clarity --}}
     <div id="app" class="flex-grow">
         <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50"> {{-- Changed shadow-md to shadow-sm to match screenshot --}}
@@ -28,14 +21,12 @@
                 <div class="flex items-center justify-between h-16">
                     <div class="flex-shrink-0">
                         <a href="{{ route('dashboard') }}" class="flex items-center">
-                            {{-- Ensure this path is correct if you use an image --}}
                             <img src="{{ asset('images/Telkom Marketplace Logo.png') }}" alt="Logo" class="h-8 w-auto">
                             <span class="ml-2 text-lg font-semibold text-red-600 dark:text-red-500">Telkom Marketplace</span>
                         </a>
                     </div>
 
                     <div class="flex-grow max-w-xl mx-4 hidden md:flex">
-                        {{-- Assuming you have a search route defined as 'search.perform' --}}
                         <form action="{{-- route('search.perform') --}}" method="GET" class="relative w-full">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="material-icons text-gray-400 dark:text-gray-500">search</span>

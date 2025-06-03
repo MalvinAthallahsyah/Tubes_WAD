@@ -8,9 +8,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<body class="font-poppins bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-    @include('navbar') {{-- Assumes this is the primary navbar for this page --}}
+    @include('navbar') {{-- Navbar component for consistent navigation across the site --}}
+
+    {{-- Main container for the dashboard content --}}
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 md:p-8 mb-8">
