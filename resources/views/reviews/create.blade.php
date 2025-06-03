@@ -51,7 +51,7 @@
                 </label>
                 <div class="mt-1 flex flex-row-reverse justify-end rating-stars-group focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-gray-800 rounded-md p-1 -ml-1">
                     @for ($i = 5; $i >= 1; $i--)
-                    <input type="radio" name="rating" id="rating{{ $i }}" value="{{ $i }}" class="sr-only rating-input" 
+                    <input type="radio" name="rating" id="rating{{ $i }}" value="{{ $i }}" class="sr-only rating-input"
                            {{ (old('rating', $review->rating ?? 0) == $i) ? 'checked' : '' }} required>
                     <label for="rating{{ $i }}" class="star-label cursor-pointer p-0.5 sm:p-1 text-gray-300 dark:text-gray-600">
                         <svg class="w-8 h-8 sm:w-9 sm:h-9 svg-star transition-colors duration-150" fill="currentColor" viewBox="0 0 20 20">
@@ -80,11 +80,23 @@
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Add Photos <span class="text-xs text-gray-500 dark:text-gray-400">(Optional, max 3 files)</span>
                 </label>
-                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-md hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors">
-                    <div class="space-y-1 text-center">
+                <div class="mt-1 p-4 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-md hover:border-indigo-500 dark:hover:border-indigo-400 transition-colors">
+                    <div class="space-y-3">
                         <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true"><path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                        <div class="flex text-sm text-gray-600 dark:text-gray-400"><label for="review_images" class="relative cursor-pointer bg-white dark:bg-gray-900 rounded-md font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 dark:focus-within:ring-offset-gray-800 focus-within:ring-indigo-500 px-1"><span>Upload files</span><input id="review_images" name="review_images[]" type="file" class="sr-only" multiple accept="image/png, image/jpeg, image/gif"></label><p class="pl-1">or drag and drop</p></div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG, GIF up to 5MB each. Max 3 images.</p>
+
+                        <div class="flex flex-col items-center">
+                            <!-- Visible file input with styling -->
+                            <input id="review_images" name="review_images[]" type="file" multiple accept="image/png, image/jpeg, image/gif"
+                                   class="block w-full text-sm text-gray-600 dark:text-gray-400
+                                   file:mr-4 file:py-2 file:px-4 file:rounded-md
+                                   file:border-0 file:text-sm file:font-medium
+                                   file:bg-indigo-100 file:text-indigo-600
+                                   dark:file:bg-indigo-900 dark:file:text-indigo-400
+                                   hover:file:bg-indigo-200 dark:hover:file:bg-indigo-800
+                                   file:cursor-pointer cursor-pointer">
+
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">PNG, JPG, GIF up to 5MB each. Max 3 images.</p>
+                        </div>
                     </div>
                 </div>
             </div>

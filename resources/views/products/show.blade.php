@@ -137,6 +137,22 @@
 
                             <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed prose prose-sm dark:prose-invert max-w-none">{{ $review->comment }}</p>
 
+
+                            @if($review->images && $review->images->count() > 0)
+                                <div class="mt-3 flex flex-wrap gap-2">
+                                    @foreach($review->images as $image)
+                                        <div class="relative h-20 w-20 overflow-hidden rounded-md border border-gray-200 dark:border-gray-700">
+                                            <div class="absolute top-0 left-0 right-0 bg-black/70 text-white text-xs p-1 truncate">
+                                                {{ $image->path }}
+                                            </div>
+
+                                            <img src="{{ asset('storage/' . $image->path) }}" alt="Review image" class="h-full w-full object-cover">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                            <!-- End Review Images -->
+
                             <div class="mt-4 flex items-center space-x-3 text-xs">
                                 <button class="flex items-center text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-300 font-medium transition-colors duration-150">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.562 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.865 2.4z"/></svg>
