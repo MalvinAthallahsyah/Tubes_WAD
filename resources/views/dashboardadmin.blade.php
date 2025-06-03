@@ -1,10 +1,9 @@
-{{-- filepath: c:\Users\Agung Wira\Desktop\TUBESSS\WAD GITHUB\resources\views\dashboardadmin.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/admin-style.css') }}">
 </head>
 <body>
@@ -21,9 +20,9 @@
                 <h1>Admin Dashboard</h1>
             </div>
 
-            {{-- Pesan Selamat Datang --}}
+            {{-- Welcome message --}}
             <div class="admin-welcome-box">
-                <p>Selamat datang di dashboard admin, {{ Auth::user()->name }}!</p>
+                <p>Welcome to Admin Dashboard, {{ Auth::user()->name }}!</p>
             </div>
 
             {{-- Wadah untuk Info Card --}}

@@ -26,20 +26,6 @@
                 <input type="hidden" name="seller_id" value="{{ $reviewable->id }}">
             @endif
 
-            {{-- Temporary User ID input - REMOVE WHEN AUTH IS INTEGRATED --}}
-            @if(!isset($review))
-            <div>
-                <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Your User ID (sementara aja ini buat ngetes) <span class="text-red-500">*</span>
-                    (<a href="{{ route('show-users-for-id') }}" target="_blank" class="text-blue-500 hover:underline">Find Test IDs</a>)
-                </label>
-                <input type="number" name="user_id" id="user_id" value="{{ old('user_id', $review->user_id ?? '') }}" required
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm @error('user_id') border-red-500 @enderror"
-                       placeholder="Enter your user ID (e.g., 1)">
-                @error('user_id') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
-            @endif
-
             {{-- Overall Rating --}}
             <div>
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -60,18 +46,7 @@
                 @error('rating') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
-            {{-- Review Title (Optional) --}}
-             <div>
-                <label for="review_title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Feedback Headline <span class="text-xs text-gray-500 dark:text-gray-400">(Optional)</span>
-                </label>
-                <input type="text" name="title" id="review_title" value="{{ old('title', $review->title ?? '') }}"
-                       class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm @error('title') border-red-500 @enderror"
-                       placeholder="e.g., Great Service! or Item as Described">
-                @error('title') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
-
-            {{-- Your Review Comment --}}
+            {{-- Your Review --}}
             <div>
                 <label for="comment" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Detailed Feedback <span class="text-xs text-gray-500 dark:text-gray-400">(Optional, but very helpful!)</span>

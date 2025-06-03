@@ -30,26 +30,30 @@ class ReviewController extends Controller
     public function store(StoreReviewRequest $request)
     {
         $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id(); // Assuming auth is set up
 
-        // Tambahkan user_id dari user yang sedang login
-        $validatedData['user_id'] = auth()->id();
+        if ($request->hasFile('review_images')) { // Assuming your input name is review_images[]
+            // For simplicity, let's just take the first image if multiple are allowed by input
+            $file = $request->file('review_images')[0]; // Get the first file
+            // Store in 'storage/app/public/review_images'
+            $path = $file->store('review_images', 'public');
+            $validatedData['image_path'] = $path; // Save the path to the database
+        } elseif ($request->hasFile('review_image_single')) { // If you have a single file input named 'review_image_single'
+            $path = $request->file('review_image_single')->store('review_images', 'public');
+            $validatedData['image_path'] = $path;
+        }
 
         Review::create($validatedData);
 
-        $redirectTarget = null;
-        if ($request->has('product_id') && $request->product_id) {
-            $redirectTarget = Product::find($request->product_id);
-            if ($redirectTarget) {
-                 return redirect()->route('products.show', $redirectTarget)->with('success', 'Review submitted successfully!');
-            }
-        } elseif ($request->has('seller_id') && $request->seller_id) {
-             $redirectTarget = Seller::find($request->seller_id);
-             if ($redirectTarget) {
-                return redirect()->route('sellers.show', $redirectTarget)->with('success', 'Review submitted successfully!');
-             }
+        // Redirect logic (same as before)
+        if ($request->filled('product_id')) {
+            return redirect()->route('products.show', $request->product_id)->with('success', 'Feedback submitted successfully!');
+        } elseif ($request->filled('seller_id')) {
+            return redirect()->route('sellers.show', $request->seller_id)->with('success', 'Feedback submitted successfully!');
         }
-        return redirect()->route('reviews.index')->with('success', 'Review submitted successfully!');
+        return redirect()->route('reviews.index')->with('success', 'Feedback submitted successfully!');
     }
+
 
     public function edit(Review $review)
     {

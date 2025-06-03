@@ -4,29 +4,188 @@
 @tailwind utilities;
 
 /* Custom Star Rating Styles */
-/* Targets stars when their corresponding (sibling) input is checked or any input *before* it in the DOM is checked (due to flex-row-reverse) */
 .rating-stars-group > input.rating-input:checked ~ .star-label .svg-star {
   color: theme('colors.yellow.400'); /* Main checked color */
 }
 
-/* Ensure the actual star label tied to a checked input also gets the checked color */
-/* This covers the case for the very first star in the reversed DOM order (which is visually the 5th star if 5 are checked) */
 .rating-stars-group > input.rating-input:checked + .star-label .svg-star {
   color: theme('colors.yellow.400');
 }
 
-/* Hover effect: stars up to the hovered one turn yellow */
-/* When hovering over a label, all "previous" labels in DOM (visually to its right due to reverse) AND itself get hover color */
 .rating-stars-group > .star-label:hover ~ .star-label .svg-star,
 .rating-stars-group > .star-label:hover .svg-star {
   color: theme('colors.yellow.300'); /* Lighter yellow for hover */
 }
 
-/* Optional: Maintain a more intense color for already selected stars even when hovering elsewhere in the group */
-/* This selector ensures that if a rating is checked, and you hover over a star that is part of that checked rating or before it, it gets a specific hover color */
 .rating-stars-group > input.rating-input:checked ~ .star-label:hover .svg-star {
-    color: theme('colors.yellow.500'); /* Slightly different hover for stars within the checked range */
+  color: theme('colors.yellow.500'); /* Slightly different hover for stars within the checked range */
 }
+
 .rating-stars-group > input.rating-input:checked + .star-label:hover .svg-star {
-    color: theme('colors.yellow.500');
+  color: theme('colors.yellow.500');
+}
+
+/* Global Styles */
+body {
+    font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    background-color: #f9fafb; /* Light background */
+    color: #374151; /* Dark text */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #ffffff; /* White background for navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar__logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__logo-img {
+    height: 40px; /* Adjust logo size */
+    margin-right: 10px;
+}
+
+.navbar__search-input {
+    padding: 10px;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 5px;
+    width: 300px;
+}
+
+.navbar__actions-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__icon {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.navbar__profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.navbar__dropdown-menu {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 10px;
+    z-index: 1000;
+}
+
+.navbar__profile-group:hover .navbar__dropdown-menu {
+    display: block; /* Show dropdown on hover */
+}
+
+.navbar__dropdown-item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar__dropdown-item:hover {
+    background-color: #f3f4f6; /* Light gray on hover */
+}
+
+.navbar__logout-button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Product Card Styles */
+.product-card {
+    border: 1px solid #e5e7eb; /* Light gray border */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #3b82f6; /* Blue */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb; /* Darker blue */
+}
+
+.btn-danger {
+    background-color: #ef4444; /* Red */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626; /* Darker red */
+}
+
+.btn-warning {
+    background-color: #fbbf24; /* Yellow */
+    color: black;
+}
+
+.btn-warning:hover {
+    background-color: #f59e0b; /* Darker yellow */
+}
+
+.btn-success {
+    background-color: #22c55e; /* Green */
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #16a34a; /* Darker green */
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #e5e7eb; /* Light gray border */
+    text-align: center;
+}
+
+.table th {
+    background-color: #f3f4f6; /* Light gray background for header */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar__search-input {
+        width: 100%; /* Full width on mobile */
+    }
 }
