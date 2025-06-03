@@ -10,7 +10,7 @@ use App\Http\Requests\UpdateReviewRequest;
 
 class ReviewController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $reviews = Review::with(['user', 'product', 'seller'])->latest()->paginate(10);
         return view('reviews.index', compact('reviews'));
@@ -29,13 +29,13 @@ class ReviewController extends Controller
     public function store(StoreReviewRequest $request)
     {
         $validatedData = $request->validated();
-        $validatedData['user_id'] = auth()->id(); 
+        $validatedData['user_id'] = auth()->id();
 
         if ($request->hasFile('review_images')) {
             $file = $request->file('review_images')[0]; // Get the first file
             $path = $file->store('review_images', 'public');
             $validatedData['image_path'] = $path; // Save the path to the database
-        } elseif ($request->hasFile('review_image_single')) { 
+        } elseif ($request->hasFile('review_image_single')) {
             $path = $request->file('review_image_single')->store('review_images', 'public');
             $validatedData['image_path'] = $path;
         }
