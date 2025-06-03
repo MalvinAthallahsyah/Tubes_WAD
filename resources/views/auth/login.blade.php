@@ -65,7 +65,7 @@
                 </button>
                 <!-- register -->
                 <div class="register-section">
-                    <p class="register-text">Don't have an account? <a href="{{ route('register') }}" class="register-link">Register here</a></p>
+                    <p class="register-text">Don't have an account? <a href="{{ route('register') }}" class="register-link">Register Here</a></p>
                 </div>
             </div>
 
