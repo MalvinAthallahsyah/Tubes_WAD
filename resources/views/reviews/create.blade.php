@@ -31,8 +31,6 @@
                 <input type="hidden" name="seller_id" value="{{ $reviewable->id }}">
             @endif
 
-            {{-- User ID Input: Only show if creating AND Auth is NOT set up yet (for testing) --}}
-            {{-- Your friend will remove this when their auth system provides the user ID --}}
             @if(!isset($review) && !Auth::check())
             <div>
                 <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
