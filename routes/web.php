@@ -189,10 +189,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Route admin lainnya bisa ditambahkan di sini
 });
 
-
-
-
-
 // ====================================================================
 // Product routes
 Route::resource('products', ProductController::class);
@@ -210,6 +206,9 @@ Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('r
 Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
 Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
+// route untuk UserController
+Route::resource('users', 'App\Http\Controllers\UserController');
+
 // Development/Test routes
 Route::get('/setup-test-data', function () {
     //
@@ -218,4 +217,6 @@ Route::get('/setup-test-data', function () {
 // Debug route - only for development
 Route::get('/show-users-for-id', function() {
     //
+})->name('show-users-for-id');
+=======
 })->name('show-users-for-id');
