@@ -26,24 +26,24 @@ class ProductController extends Controller
         return view('products.index', compact('products', 'categories'));
     }
 
-    public function show(Product $product) // Route Model Binding sudah baik
+    public function show(Product $product)
     {
-        $product->load(['category', 'seller', 'reviews.user']); // Asumsi relasi 'seller' dan 'reviews' ada
-
+        $product->load(['reviews.user', 'seller']);
+    
         $ratingDistribution = $product->reviews()
-            ->select('rating', DB::raw('count(*) as count'))
+            ->selectRaw('rating, count(*) as count')
             ->groupBy('rating')
-            // ->orderBy('rating', 'desc') // Urutan dari pluck akan mengikuti ini
+            ->orderBy('rating', 'desc')
             ->pluck('count', 'rating')
             ->all();
-
+    
         for ($i = 1; $i <= 5; $i++) {
             if (!isset($ratingDistribution[$i])) {
                 $ratingDistribution[$i] = 0;
             }
         }
-        ksort($ratingDistribution); // Memastikan urutan rating 1-5 untuk view
-
+        ksort($ratingDistribution); 
+    
         return view('products.show', compact('product', 'ratingDistribution'));
     }
 

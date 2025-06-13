@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telkom Marketplace</title>
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Cara import CSS langsung (untuk pemula) -->
     <link rel="stylesheet" href="{{ asset('css/login-register.css') }}">
     <style>
         /* Style tambahan untuk halaman register */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
         .form-group-half {
             width: 48%;
             display: inline-block;
@@ -26,7 +31,7 @@
             <div class="left-side">
                 <!-- Judul -->
                 <div class="logo">
-                    <img src="{{ asset('images/logomarketplace.png') }}" alt="Telkom Marketplace Logo">
+                    <img src="{{ asset('images/Telkom Marketplace Logo.png') }}" alt="Telkom Marketplace Logo" style="width: 50px; height: 50px; object-fit: contain;">
                 </div>
                 <!-- Header form register -->
                 <h3 class="login-header">Create Your Account</h3>

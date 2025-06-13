@@ -15,7 +15,7 @@
             <div class="left-side">
                 <!-- Title disini -->
                 <div class="logo">
-                    <img src="{{ asset('images/logomarketplace.png') }}" alt="Telkom Marketplace Logo">
+                    <img src="{{ asset('images/Telkom Marketplace Logo.png') }}" alt="Telkom Marketplace Logo" style="width: 50x; height: 50px; object-fit: contain;">
                 </div>
                 <!-- Header form login -->
                 <h3 class="login-header">Login to Your Account</h3>
@@ -23,7 +23,7 @@
                 <!-- Form Login -->
                 <form method="POST" action="{{ route('login') }}">
                     @csrf <!-- directive Blade yang menghasilkan input hidden -->
-
+s
                     <!-- Input email -->
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
@@ -65,7 +65,7 @@
                 </button>
                 <!-- register -->
                 <div class="register-section">
-                    <p class="register-text">Don't have an account? <a href="{{ route('register') }}" class="register-link">Register here</a></p>
+                    <p class="register-text">Don't have an account? <a href="{{ route('register') }}" class="register-link">Register Here</a></p>
                 </div>
             </div>
 

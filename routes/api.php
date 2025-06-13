@@ -1,18 +1,17 @@
 <?php
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ApiReviewController; 
+use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ProductController;
 
-// Public API Routes for Reviews (GET Only)
-Route::get('products/{product}/reviews', [ApiReviewController::class, 'getProductReviews']);
-Route::get('products/{product}/rating', [ApiReviewController::class, 'getProductRating']);
+// Product Management
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
 
-Route::get('sellers/{seller}/reviews', [ApiReviewController::class, 'getSellerReviews']);
-Route::get('sellers/{seller}/reputation', [ApiReviewController::class, 'getSellerReputation']);
+// User Management
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{user}', [UserController::class, 'show']);
 
-Route::get('reviews/{review}', [ApiReviewController::class, 'getReview']);
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user(); 
-});
+Route::get('/reviews', [App\Http\Controllers\Api\ApiReviewController::class, 'index']);
+Route::get('/reviews/{review}', [App\Http\Controllers\Api\ApiReviewController::class, 'show']);

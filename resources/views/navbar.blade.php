@@ -23,7 +23,6 @@
 
     <div class="navbar__actions-wrapper">
         <div class="navbar__icons-group">
-            <span class="material-icons navbar__icon">chat_bubble_outline</span>
             <span class="material-icons navbar__icon">shopping_cart</span>
             <span class="material-icons navbar__icon">favorite_border</span>
         </div>
